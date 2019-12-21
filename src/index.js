@@ -1,4 +1,5 @@
 import './helloworld/index.js';
+import './todoList/index.js';
 
 // DOMの取得
 const mainElm = document.querySelector('main');
