@@ -7,21 +7,34 @@ template.innerHTML = `
       display: block;
     }
     h1 {
+      text-align: center;
       font-weight: bold;
       font-size: 50px;
     }
-    form {
-      text-align: center;
-      margin-bottom: 20px;
-    }
     .container {
-      text-align: center;
+      padding: 20px 0;
+    }
+    form {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid lightgray;
+      padding: 10px; 0;
+      background-color: whitesmoke;
+    }
+    input {
+      flex-grow: 1;
+      margin: 0 10px;
+      height: 20px;
+    }
+    x-todo-item + x-todo-item {
+      margin-top: 20px;
     }
   </style>
   <h1>Todo List</h1>
   <form>
     <input type="text"></input>
-    <button class="submit" type="button">submit</button>
+    <button type="submit">追加</button>
   </form>
   <div class="container"></div>
 `;
@@ -29,13 +42,13 @@ template.innerHTML = `
 class TodoList extends HTMLElement {
   constructor() {
     super();
+    this._todoList = [];
     this._shadowRoot = this.attachShadow({mode: 'open'});
     this._shadowRoot.appendChild(template.content.cloneNode(true));
-    this._todoList = [];
     this._containerElm = this._shadowRoot.querySelector('.container');
-    this._submitElm = this._shadowRoot.querySelector('.submit');
-    this._clickListener =  this._add.bind(this);
+    this._submitElm = this._shadowRoot.querySelector('form');
     this._inputElm = this._shadowRoot.querySelector('input');
+    this._clickListener =  this._add.bind(this);
   }
 
   connectedCallback() {
@@ -69,7 +82,8 @@ class TodoList extends HTMLElement {
     });
   }
 
-  _add() {
+  _add(e) {
+    e.preventDefault();
     if (!this._inputElm.value) {
       return;
     }

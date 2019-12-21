@@ -3,14 +3,24 @@ template.innerHTML = `
   <style>
     :host {
       display: block;
-      font-family: Helvetica;
-      font-weight: bold;
-      padding: 10px;
+    }
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid lightgray;
+      padding: 10px; 0;
+    }
+    .label {
+      flex-grow: 1;
+      margin: 0 10px;
     }
   </style>
-  <input class="checkbox" type="checkbox">
-  <label class="label"></label>
-  <button class="remove" type="button">remove</button>
+  <div class="container">
+    <input class="checkbox" type="checkbox">
+    <label class="label"></label>
+    <button class="remove" type="button">削除</button>
+  </div>
 `;
 
 class Todo extends HTMLElement {
