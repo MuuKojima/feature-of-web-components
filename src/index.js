@@ -1,4 +1,4 @@
-import '../demo/helloworld/index.js';
+import './helloworld/index.js';
 
 // DOMの取得
 const mainElm = document.querySelector('main');
