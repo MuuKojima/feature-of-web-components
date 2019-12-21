@@ -15,7 +15,10 @@ template.innerHTML = `
       flex-grow: 1;
       margin: 0 10px;
     }
-    .label--selected {
+    :host .label {
+      text-decoration: none;
+    }
+    :host([checked]) .label {
       text-decoration: line-through;
       opacity: 0.5;
     }
@@ -29,19 +32,19 @@ template.innerHTML = `
 
 class Todo extends HTMLElement {
   static get observedAttributes() {
-    return ['label', 'checked', 'index'];
+    return ['id', 'label', 'checked'];
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
     switch(name){
+      case 'id':
+          this._id = newValue;
+          break;
       case 'label':
         this._label = newValue;
         break;
       case 'checked':
         this._checked = this.hasAttribute('checked');
-        break;
-      case 'index':
-        this._index = Number(newValue);
         break;
     }
     this._render();
@@ -51,8 +54,8 @@ class Todo extends HTMLElement {
     super();
     this.attachShadow({ 'mode': 'open' });
     this.shadowRoot.appendChild(template.content.cloneNode(true));
+    this._id = '';
     this._label =  '';
-    this._index = 0;
     this._checked =  false;
     this._checkBoxElm = this.shadowRoot.querySelector('.checkbox');
     this._removeElm = this.shadowRoot.querySelector('.remove');
@@ -76,12 +79,13 @@ class Todo extends HTMLElement {
     this._labelElm.textContent = this._label;
     this._checkBoxElm.checked = this._checked;
     this._checked && this._labelElm.classList.add('label--selected');
+    !this._checked && this._labelElm.classList.remove('label--selected');
   }
 
   _dispatchToggle() {
     this.dispatchEvent(new CustomEvent('onToggle',
       {
-        detail: { index: this._index },
+        detail: { id: this._id },
         bubbles: true,
         composed: true
       }
@@ -91,11 +95,23 @@ class Todo extends HTMLElement {
   _dispatchRemove() {
     this.dispatchEvent(new CustomEvent('onRemove',
       {
-        detail: { index: this._index },
+        detail: { id: this._id },
         bubbles: true,
         composed: true
       }
     ));
+  }
+
+  get id() {
+    return this.getAttribute('id');
+  }
+
+  set id(val) {
+    if (val) {
+      this.setAttribute('id', val);
+    } else {
+      this.removeAttribute('id');
+    }
   }
 
   get label() {
@@ -111,26 +127,15 @@ class Todo extends HTMLElement {
   }
 
   get checked() {
-    return this.getAttribute('checked');
+    return this.getAttribute('checked') === '';
   }
 
   set checked(val) {
+    debugger
     if (val) {
       this.setAttribute('checked', '');
     } else {
       this.removeAttribute('checked');
-    }
-  }
-
-  get index() {
-    return this.getAttribute('index');
-  }
-
-  set index(val) {
-    if (val) {
-      this.setAttribute('index', val);
-    } else {
-      this.removeAttribute('index');
     }
   }
 }

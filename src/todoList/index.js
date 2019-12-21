@@ -1,5 +1,6 @@
 import './item.js';
 
+const TAG_NAME = 'x-todo-list';
 const template = document.createElement('template');
 template.innerHTML = `
   <style>
@@ -48,16 +49,16 @@ class TodoList extends HTMLElement {
     this._containerElm = this.shadowRoot.querySelector('.container');
     this._submitElm = this.shadowRoot.querySelector('form');
     this._inputElm = this.shadowRoot.querySelector('input');
-    this._clickSubmitListener =  this._add.bind(this);
+    this._clickSubmitListener =  this._tryAdd.bind(this);
   }
 
   connectedCallback() {
-    this._submitElm.addEventListener('click', this._clickSubmitListener);
+    this._submitElm.addEventListener('submit', this._clickSubmitListener);
     this._render();
   }
 
   disconnectedCallback() {
-    this._submitElm.removeEventListener('click', this._clickSubmitListener)
+    this._submitElm.removeEventListener('submit', this._clickSubmitListener)
     for (let item of this._containerElm.children) {
       item.clearListner();
     }
@@ -65,47 +66,54 @@ class TodoList extends HTMLElement {
 
   _render() {
     this._containerElm.innerHTML = '';
-    this._todoList.forEach((item, index) => {
-      const todoElm = document.createElement('x-todo-item');
-      todoElm.label = item.label;
-      todoElm.checked = item.checked;
-      todoElm.index = index;
-      const onToggleListener = this._toggle.bind(this);
-      const onRemoveListener = this._remove.bind(this);
-      todoElm.addEventListener('onToggle', onToggleListener);
-      todoElm.addEventListener('onRemove', onRemoveListener);
-      todoElm.clearListner = () => {
-        todoElm.removeEventListener('onToggle', onToggleListener);
-        todoElm.removeEventListener('onRemove', onRemoveListener);
-      };
-      this._containerElm.appendChild(todoElm);
-    });
+    this._todoList.forEach(item => this._add(item));
   }
 
-  _add(e) {
+  _createRandomId() {
+    return Math.random().toString(32).substring(2);
+  }
+
+  _tryAdd(e) {
     e.preventDefault();
     if (!this._inputElm.value) {
       return;
     }
-    const todo = { label: this._inputElm.value, checked: false};
-    this._todoList.unshift(todo);
+    const todo = { id: this._createRandomId(), label: this._inputElm.value, checked: false};
+    this._add(todo);
+  }
+
+  _add(item) {
+    const todoElm = document.createElement(TAG_NAME);
+    todoElm.id = item.id;
+    todoElm.label = item.label;
+    todoElm.checked = item.checked;
+    const onToggleListener = this._toggle.bind(this);
+    const onRemoveListener = this._remove.bind(this);
+    todoElm.addEventListener('onToggle', onToggleListener);
+    todoElm.addEventListener('onRemove', onRemoveListener);
+    todoElm.clearListner = () => {
+      todoElm.removeEventListener('onToggle', onToggleListener);
+      todoElm.removeEventListener('onRemove', onRemoveListener);
+    };
+    this._containerElm.appendChild(todoElm);
     this._inputElm.value = '';
-    this._render();
   }
 
   _toggle(e) {
-    const todo = this._todoList.find((item, index) => {
-      return index === e.detail.index;
+    const todoElms = this.shadowRoot.querySelectorAll(TAG_NAME);
+    [...todoElms].forEach(item => {
+      if (item.id !== e.detail.id) {
+        return;
+      }
+      item.checked = !item.checked;
     });
-    todo.checked = !todo.checked;
-    this._render();
   }
 
   _remove(e) {
-    const index = e.detail.index;
-    this._todoList.splice(index, 1);
+    const id = e.detail.id;
+    this._todoList.splice(id, 1);
     this._render();
   }
 }
 
-window.customElements.define('x-todo-list', TodoList);
+window.customElements.define(TAG_NAME, TodoList);
