@@ -1,6 +1,6 @@
 import './item.js';
 
-const TAG_NAME = 'x-todo-list';
+// テンプレートタグの作成
 const template = document.createElement('template');
 template.innerHTML = `
   <style>
@@ -40,23 +40,34 @@ template.innerHTML = `
   <div class="container"></div>
 `;
 
+/**
+ * Todo Listのルートクラス
+ */
 class TodoList extends HTMLElement {
+  /**
+   * コンスタントラクタ
+   */
   constructor() {
     super();
     this.attachShadow({mode: 'open'});
     this.shadowRoot.appendChild(template.content.cloneNode(true));
-    this._todoList = [];
     this._containerElm = this.shadowRoot.querySelector('.container');
     this._submitElm = this.shadowRoot.querySelector('form');
     this._inputElm = this.shadowRoot.querySelector('input');
     this._clickSubmitListener =  this._tryAdd.bind(this);
   }
 
+  /**
+   * アタッチ
+   */
   connectedCallback() {
     this._submitElm.addEventListener('submit', this._clickSubmitListener);
     this._render();
   }
 
+  /**
+   * デタッチ
+   */
   disconnectedCallback() {
     this._submitElm.removeEventListener('submit', this._clickSubmitListener)
     for (let item of this._containerElm.children) {
@@ -64,29 +75,70 @@ class TodoList extends HTMLElement {
     }
   }
 
+  /**
+   * 描画
+   * @private
+   */
   _render() {
-    this._containerElm.innerHTML = '';
-    this._todoList.forEach(item => this._add(item));
+    // テストデータの挿入
+    this._add('TaskC', false);
+    this._add('TaskB', true);
+    this._add('TaskA', false);
   }
 
+  /**
+   * アイテムをIDから取得する
+   * @private
+   * @param {string} id
+   * @return {Object | undefined}
+   */
+  _findTodoItemById(id) {
+    const todoElms = this.shadowRoot.querySelectorAll('x-todo-item');
+    let target;
+    [...todoElms].forEach(item => {
+      if (item.id !== id) {
+        return;
+      }
+      target = item;
+    });
+    return target;
+  }
+
+  /**
+   * ランダムなIDを生成
+   * (UUIDを作ろうとすると、コードが長くなるので、ここでは割愛)
+   * @private
+   * @return {string}
+   */
   _createRandomId() {
     return Math.random().toString(32).substring(2);
   }
 
+  /**
+   * アイテムの追加を試みる
+   * @private
+   * @param {Event} e 
+   */
   _tryAdd(e) {
     e.preventDefault();
-    if (!this._inputElm.value) {
+    const val = this._inputElm.value;
+    if (!val) {
       return;
     }
-    const todo = { id: this._createRandomId(), label: this._inputElm.value, checked: false};
-    this._add(todo);
+    this._add(val, false);
   }
 
-  _add(item) {
-    const todoElm = document.createElement(TAG_NAME);
-    todoElm.id = item.id;
-    todoElm.label = item.label;
-    todoElm.checked = item.checked;
+  /**
+   * アイテムを追加する
+   * @private
+   * @param {label} label
+   * @param {boolean} checked
+   */
+  _add(label, checked) {
+    const todoElm = document.createElement('x-todo-item');
+    todoElm.id = this._createRandomId();
+    todoElm.label = label;
+    todoElm.checked = checked;
     const onToggleListener = this._toggle.bind(this);
     const onRemoveListener = this._remove.bind(this);
     todoElm.addEventListener('onToggle', onToggleListener);
@@ -95,25 +147,37 @@ class TodoList extends HTMLElement {
       todoElm.removeEventListener('onToggle', onToggleListener);
       todoElm.removeEventListener('onRemove', onRemoveListener);
     };
-    this._containerElm.appendChild(todoElm);
+    // 先頭に追加
+    this._containerElm.insertBefore(todoElm, this._containerElm.firstChild);
     this._inputElm.value = '';
   }
 
+  /**
+   * アイテムのチェックをトグルする
+   * @private
+   * @param {Event} e 
+   */
   _toggle(e) {
-    const todoElms = this.shadowRoot.querySelectorAll(TAG_NAME);
-    [...todoElms].forEach(item => {
-      if (item.id !== e.detail.id) {
-        return;
-      }
-      item.checked = !item.checked;
-    });
+    const target = this._findTodoItemById(e.detail.id);
+    if (!target) {
+      return;
+    }
+    target.checked = !target.checked;
   }
 
+  /**
+   * アイテムを削除する
+   * @private
+   * @param {Event} e 
+   */
   _remove(e) {
-    const id = e.detail.id;
-    this._todoList.splice(id, 1);
-    this._render();
+    const target = this._findTodoItemById(e.detail.id);
+    if (!target) {
+      return;
+    }
+    this._containerElm.removeChild(target);
   }
 }
 
-window.customElements.define(TAG_NAME, TodoList);
+// カスタムエレメントの登録
+window.customElements.define('x-todo-list', TodoList);

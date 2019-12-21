@@ -1,3 +1,4 @@
+// テンプレートタグの作成
 const template = document.createElement('template');
 template.innerHTML = `
   <style>
@@ -30,11 +31,23 @@ template.innerHTML = `
   </div>
 `;
 
+/**
+ * TodoListのアイテムクラス
+ */
 class Todo extends HTMLElement {
+  /**
+   * アトリビュートの変更を購読するホワイトリストの作成
+   */
   static get observedAttributes() {
     return ['id', 'label', 'checked'];
   }
 
+  /**
+   * アトリビュートの変更を購読
+   * @param {string} name 
+   * @param {string} oldValue 
+   * @param {string} newValue 
+   */
   attributeChangedCallback(name, oldValue, newValue) {
     switch(name){
       case 'id':
@@ -50,6 +63,9 @@ class Todo extends HTMLElement {
     this._render();
   }
 
+  /**
+   * コンスタントラクタ
+   */
   constructor() {
     super();
     this.attachShadow({ 'mode': 'open' });
@@ -64,24 +80,37 @@ class Todo extends HTMLElement {
     this._removeListener = this._dispatchRemove.bind(this);
   }
 
+  /**
+   * アタッチ
+   */
   connectedCallback() {
     this._checkBoxElm.addEventListener('click', this._toggleListener);
     this._removeElm.addEventListener('click', this._removeListener);
     this._render();
   }
 
+  /**
+   * デタッチ
+   */
   disconnectedCallback() {
     this._checkBoxElm.removeEventListener('click', this._toggleListener)
     this._removeElm.removeEventListener('click', this._removeListener);
   }
 
+  /**
+   * 描画
+   * @private
+   */
   _render() {
     this._labelElm.textContent = this._label;
     this._checkBoxElm.checked = this._checked;
-    this._checked && this._labelElm.classList.add('label--selected');
-    !this._checked && this._labelElm.classList.remove('label--selected');
+    this._checked ? this._labelElm.classList.add('label--selected') : this._labelElm.classList.remove('label--selected');
   }
 
+  /**
+   * アイテムのチェックがトグルされた事を通知
+   * @private
+   */
   _dispatchToggle() {
     this.dispatchEvent(new CustomEvent('onToggle',
       {
@@ -92,6 +121,10 @@ class Todo extends HTMLElement {
     ));
   }
 
+  /**
+   * アイテムが削除された事を通知
+   * @private
+   */
   _dispatchRemove() {
     this.dispatchEvent(new CustomEvent('onRemove',
       {
@@ -102,10 +135,16 @@ class Todo extends HTMLElement {
     ));
   }
 
+  /**
+   * @return {string} id
+   */
   get id() {
     return this.getAttribute('id');
   }
 
+  /**
+   * @param {string} val
+   */
   set id(val) {
     if (val) {
       this.setAttribute('id', val);
@@ -114,10 +153,9 @@ class Todo extends HTMLElement {
     }
   }
 
-  get label() {
-    return this.getAttribute('label');
-  }
-
+  /**
+   * @param {string} val
+   */
   set label(val) {
     if (val) {
       this.setAttribute('label', val);
@@ -126,12 +164,17 @@ class Todo extends HTMLElement {
     }
   }
 
+  /**
+   * @return {boolean}
+   */
   get checked() {
     return this.getAttribute('checked') === '';
   }
 
+  /**
+   * @param {boolean} val
+   */
   set checked(val) {
-    debugger
     if (val) {
       this.setAttribute('checked', '');
     } else {
@@ -140,4 +183,5 @@ class Todo extends HTMLElement {
   }
 }
 
+// カスタムエレメントの登録
 window.customElements.define('x-todo-item', Todo);
