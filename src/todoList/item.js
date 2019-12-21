@@ -49,16 +49,16 @@ class Todo extends HTMLElement {
 
   constructor() {
     super();
-    this._shadowRoot = this.attachShadow({ 'mode': 'open' });
-    this._shadowRoot.appendChild(template.content.cloneNode(true));
+    this.attachShadow({ 'mode': 'open' });
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
     this._label =  '';
     this._index = 0;
     this._checked =  false;
-    this._checkBoxElm = this._shadowRoot.querySelector('.checkbox');
+    this._checkBoxElm = this.shadowRoot.querySelector('.checkbox');
+    this._removeElm = this.shadowRoot.querySelector('.remove');
+    this._labelElm = this.shadowRoot.querySelector('.label');
     this._toggleListener = this._dispatchToggle.bind(this);
-    this._removeElm = this._shadowRoot.querySelector('.remove');
     this._removeListener = this._dispatchRemove.bind(this);
-    this._labelElm = this._shadowRoot.querySelector('.label');
   }
 
   connectedCallback() {

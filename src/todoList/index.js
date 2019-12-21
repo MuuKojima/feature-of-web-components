@@ -42,22 +42,22 @@ template.innerHTML = `
 class TodoList extends HTMLElement {
   constructor() {
     super();
+    this.attachShadow({mode: 'open'});
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
     this._todoList = [];
-    this._shadowRoot = this.attachShadow({mode: 'open'});
-    this._shadowRoot.appendChild(template.content.cloneNode(true));
-    this._containerElm = this._shadowRoot.querySelector('.container');
-    this._submitElm = this._shadowRoot.querySelector('form');
-    this._inputElm = this._shadowRoot.querySelector('input');
-    this._clickListener =  this._add.bind(this);
+    this._containerElm = this.shadowRoot.querySelector('.container');
+    this._submitElm = this.shadowRoot.querySelector('form');
+    this._inputElm = this.shadowRoot.querySelector('input');
+    this._clickSubmitListener =  this._add.bind(this);
   }
 
   connectedCallback() {
-    this._submitElm.addEventListener('click', this._clickListener);
+    this._submitElm.addEventListener('click', this._clickSubmitListener);
     this._render();
   }
 
   disconnectedCallback() {
-    this._submitElm.removeEventListener('click', this._clickListener)
+    this._submitElm.removeEventListener('click', this._clickSubmitListener)
     for (let item of this._containerElm.children) {
       item.clearListner();
     }
