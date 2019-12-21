@@ -59,6 +59,8 @@ class Todo extends HTMLElement {
       case 'checked':
         this._checked = this.hasAttribute('checked');
         break;
+      default:
+        break;
     }
     this._render();
   }
