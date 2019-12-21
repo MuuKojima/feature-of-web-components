@@ -41,7 +41,7 @@ template.innerHTML = `
 `;
 
 /**
- * Todo Listのルートクラス
+ * TodoListのルートクラス
  */
 class TodoList extends HTMLElement {
   /**
