@@ -1,0 +1,12 @@
+{
+  "name": "mastering-webcomponents",
+  "version": "0.0.1",
+  "description": "",
+  "main": "./src",
+  "scripts": {
+    "start": "serve ./src"
+  },
+  "dependencies": {
+    "serve": "^11.2.0"
+  }
+}

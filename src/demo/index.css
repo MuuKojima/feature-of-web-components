@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  color: dimgray;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+main {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 30px;
+}
+
+.box {
+  border: 1px solid lightgray;
+  padding: 10px 20px;
+}
+
+.box + .box {
+  margin-top: 10px;
+}
+
+button {
+  margin-right: 10px;
+}
