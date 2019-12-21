@@ -5,7 +5,6 @@ template.innerHTML = `
       display: block;
     }
     h1 {
-      text-align: center;
       font-weigh: bold;
       font-size: 50px;
     }
