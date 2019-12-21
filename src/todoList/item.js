@@ -15,6 +15,10 @@ template.innerHTML = `
       flex-grow: 1;
       margin: 0 10px;
     }
+    .label--selected {
+      text-decoration: line-through;
+      opacity: 0.5;
+    }
   </style>
   <div class="container">
     <input class="checkbox" type="checkbox">
@@ -71,7 +75,7 @@ class Todo extends HTMLElement {
   _render() {
     this._labelElm.textContent = this._label;
     this._checkBoxElm.checked = this._checked;
-    this._labelElm.style.textDecoration = this._checked ? 'line-through'  : 'none';
+    this._checked && this._labelElm.classList.add('label--selected');
   }
 
   _dispatchToggle() {
