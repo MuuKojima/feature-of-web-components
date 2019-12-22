@@ -4,10 +4,16 @@ template.innerHTML = `
   <style>
     h1 {
       font-size: 30px;
-      color: blue;
+      color: #3F51B5;
+    }
+    .box {
+      border: 1px solid lightgray;
+      padding: 20px;
     }
   </style>
-  <h1>ShadowDOMが無効になる</h1>
+  <div class="box">
+    <h1>ShadowDOMを無効</h1>
+  <div> 
 `;
 
 /**

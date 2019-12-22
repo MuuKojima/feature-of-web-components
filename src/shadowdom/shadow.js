@@ -7,10 +7,16 @@ template.innerHTML = `
     }
     h1 {
       font-size: 30px;
-      color: red;
+      color: #d51b5a;
+    }
+    .box {
+      border: 1px solid lightgray;
+      padding: 20px;
     }
   </style>
-  <h1>ShadowDOMが有効になる</h1>
+  <div class="box">
+    <h1>ShadowDOMを有効</h1>
+  <div>
 `;
 
 /**
