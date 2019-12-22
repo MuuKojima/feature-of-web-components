@@ -145,6 +145,7 @@ class Todo extends HTMLElement {
   }
 
   /**
+   * idの取得
    * @returns {string} id
    */
   get id() {
@@ -152,6 +153,7 @@ class Todo extends HTMLElement {
   }
 
   /**
+   * ラベルをセット
    * @param {string} val
    */
   set label(val) {
@@ -163,6 +165,7 @@ class Todo extends HTMLElement {
   }
 
   /**
+   * チェックされているかどうか
    * @returns {boolean}
    */
   get checked() {
@@ -170,6 +173,7 @@ class Todo extends HTMLElement {
   }
 
   /**
+   * チェックをセット
    * @param {boolean} val
    */
   set checked(val) {

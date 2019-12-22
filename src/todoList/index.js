@@ -91,15 +91,9 @@ class TodoList extends HTMLElement {
    * @param {string} id
    * @returns {Element | undefined}
    */
-  _findTodoItemById(id) {
+  _findItemById(id) {
     const todoElms = this.shadowRoot.querySelectorAll('x-todo-item');
-    let target;
-    [...todoElms].forEach(item => {
-      if (item.id !== id) {
-        return;
-      }
-      target = item;
-    });
+    const target = [...todoElms].find(item => item.id === id);
     return target;
   }
 
@@ -147,11 +141,12 @@ class TodoList extends HTMLElement {
    * @param {CustomEvent} e 
    */
   _toggleItem(e) {
-    const target = this._findTodoItemById(e.detail.id);
-    if (!target) {
+    const item = this._findItemById(e.detail.id);
+    if (!item) {
       return;
     }
-    target.checked = !target.checked;
+    // チェックを反転させる
+    item.checked = !item.checked;
   }
 
   /**
@@ -160,11 +155,12 @@ class TodoList extends HTMLElement {
    * @param {CustomEvent} e 
    */
   _removeItem(e) {
-    const target = this._findTodoItemById(e.detail.id);
-    if (!target) {
+    const item = this._findItemById(e.detail.id);
+    if (!item) {
       return;
     }
-    this._containerElm.removeChild(target);
+    // 要素を削除
+    this._containerElm.removeChild(item);
   }
 }
 
