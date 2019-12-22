@@ -15,6 +15,10 @@ main {
 }
 
 x-hellowword,
+x-shadow-noshadow {
+  width: 700px;
+}
+
 x-todo-list {
   width: 500px;
 }
