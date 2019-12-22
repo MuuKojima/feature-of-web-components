@@ -45,7 +45,7 @@ template.innerHTML = `
  */
 class TodoList extends HTMLElement {
   /**
-   * コンスタントラクタ
+   * コンストラクタ
    */
   constructor() {
     super();
@@ -86,10 +86,10 @@ class TodoList extends HTMLElement {
   }
 
   /**
-   * アイテムをIDから取得する
+   * TodoアイテムをIDから取得する
    * @private
    * @param {string} id
-   * @returns {Object | undefined}
+   * @returns {Element | undefined}
    */
   _findTodoItemById(id) {
     const todoElms = this.shadowRoot.querySelectorAll('x-todo-item');
@@ -114,9 +114,9 @@ class TodoList extends HTMLElement {
     if (!val) {
       return;
     }
-    this._add(val, false);
     // input内を初期化
     this._inputElm.value = '';
+    this._add(val, false);
   }
 
   /**

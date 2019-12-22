@@ -63,7 +63,7 @@ class Todo extends HTMLElement {
   }
 
   /**
-   * コンスタントラクタ
+   * コンストラクタ
    */
   constructor() {
     super();
@@ -77,16 +77,6 @@ class Todo extends HTMLElement {
     this._labelElm = this.shadowRoot.querySelector('.label');
     this._toggleListener = this._dispatchToggle.bind(this);
     this._removeListener = this._dispatchRemove.bind(this);
-  }
-
-  /**
-   * ランダムなIDを生成
-   * (UUIDを作ろうとすると、コードが長くなるので、ここでは割愛)
-   * @private
-   * @returns {string}
-   */
-  _createRandomId() {
-    return Math.random().toString(32).substring(2);
   }
 
   /**
@@ -114,6 +104,16 @@ class Todo extends HTMLElement {
     this._labelElm.textContent = this._label;
     this._checkBoxElm.checked = this._checked;
     this._checked ? this._labelElm.classList.add('label--selected') : this._labelElm.classList.remove('label--selected');
+  }
+
+  /**
+   * ランダムなIDを生成
+   * (UUIDを作ろうとすると、コードが長くなるので、ここでは割愛)
+   * @private
+   * @returns {string}
+   */
+  _createRandomId() {
+    return Math.random().toString(32).substring(2);
   }
 
   /**
