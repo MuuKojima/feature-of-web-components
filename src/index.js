@@ -16,7 +16,7 @@ const clearMain = () => {
 
 /**
  * 各アイテム(ボタン)をクリック
- * @param {Event} e
+ * @param {CustomEvent} e
  */
 const handleItemClick = e => {
   // 初期化

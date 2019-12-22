@@ -39,7 +39,7 @@ class Todo extends HTMLElement {
    * アトリビュートの変更を購読するホワイトリストの作成
    */
   static get observedAttributes() {
-    return ['id', 'label', 'checked'];
+    return ['label', 'checked'];
   }
 
   /**
@@ -50,9 +50,6 @@ class Todo extends HTMLElement {
    */
   attributeChangedCallback(name, oldValue, newValue) {
     switch(name){
-      case 'id':
-          this._id = newValue;
-          break;
       case 'label':
         this._label = newValue;
         break;
@@ -72,7 +69,7 @@ class Todo extends HTMLElement {
     super();
     this.attachShadow({ 'mode': 'open' });
     this.shadowRoot.appendChild(template.content.cloneNode(true));
-    this._id = '';
+    this._id = this._createRandomId();
     this._label =  '';
     this._checked =  false;
     this._checkBoxElm = this.shadowRoot.querySelector('.checkbox');
@@ -80,6 +77,16 @@ class Todo extends HTMLElement {
     this._labelElm = this.shadowRoot.querySelector('.label');
     this._toggleListener = this._dispatchToggle.bind(this);
     this._removeListener = this._dispatchRemove.bind(this);
+  }
+
+  /**
+   * ランダムなIDを生成
+   * (UUIDを作ろうとすると、コードが長くなるので、ここでは割愛)
+   * @private
+   * @returns {string}
+   */
+  _createRandomId() {
+    return Math.random().toString(32).substring(2);
   }
 
   /**
@@ -138,21 +145,10 @@ class Todo extends HTMLElement {
   }
 
   /**
-   * @return {string} id
+   * @returns {string} id
    */
   get id() {
-    return this.getAttribute('id');
-  }
-
-  /**
-   * @param {string} val
-   */
-  set id(val) {
-    if (val) {
-      this.setAttribute('id', val);
-    } else {
-      this.removeAttribute('id');
-    }
+    return this._id;
   }
 
   /**
@@ -167,7 +163,7 @@ class Todo extends HTMLElement {
   }
 
   /**
-   * @return {boolean}
+   * @returns {boolean}
    */
   get checked() {
     return this.getAttribute('checked') === '';

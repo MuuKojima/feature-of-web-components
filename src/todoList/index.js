@@ -89,7 +89,7 @@ class TodoList extends HTMLElement {
    * アイテムをIDから取得する
    * @private
    * @param {string} id
-   * @return {Object | undefined}
+   * @returns {Object | undefined}
    */
   _findTodoItemById(id) {
     const todoElms = this.shadowRoot.querySelectorAll('x-todo-item');
@@ -104,19 +104,9 @@ class TodoList extends HTMLElement {
   }
 
   /**
-   * ランダムなIDを生成
-   * (UUIDを作ろうとすると、コードが長くなるので、ここでは割愛)
-   * @private
-   * @return {string}
-   */
-  _createRandomId() {
-    return Math.random().toString(32).substring(2);
-  }
-
-  /**
    * アイテムの追加を試みる
    * @private
-   * @param {Event} e 
+   * @param {CustomEvent} e 
    */
   _tryAdd(e) {
     e.preventDefault();
@@ -125,6 +115,8 @@ class TodoList extends HTMLElement {
       return;
     }
     this._add(val, false);
+    // input内を初期化
+    this._inputElm.value = '';
   }
 
   /**
@@ -135,7 +127,6 @@ class TodoList extends HTMLElement {
    */
   _add(label, checked) {
     const todoElm = document.createElement('x-todo-item');
-    todoElm.id = this._createRandomId();
     todoElm.label = label;
     todoElm.checked = checked;
     const onToggleListener = this._toggle.bind(this);
@@ -146,15 +137,14 @@ class TodoList extends HTMLElement {
       todoElm.removeEventListener('onToggle', onToggleListener);
       todoElm.removeEventListener('onRemove', onRemoveListener);
     };
-    // 先頭に追加
+    // コンテナ内の先頭にTodoアイテムを追加
     this._containerElm.insertBefore(todoElm, this._containerElm.firstChild);
-    this._inputElm.value = '';
   }
 
   /**
    * アイテムのチェックをトグルする
    * @private
-   * @param {Event} e 
+   * @param {CustomEvent} e 
    */
   _toggle(e) {
     const target = this._findTodoItemById(e.detail.id);
@@ -167,7 +157,7 @@ class TodoList extends HTMLElement {
   /**
    * アイテムを削除する
    * @private
-   * @param {Event} e 
+   * @param {CustomEvent} e 
    */
   _remove(e) {
     const target = this._findTodoItemById(e.detail.id);
