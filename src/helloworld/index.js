@@ -1,3 +1,4 @@
+// テンプレートタグの作成
 const template = document.createElement('template');
 template.innerHTML = `
   <style>
@@ -12,7 +13,13 @@ template.innerHTML = `
   <h1>Hello World</h1>
 `;
 
+/**
+ * Hello Woldクラス
+ */
 class HelloWorld extends HTMLElement {
+  /**
+   * コンストラクタ
+   */
   constructor() {
     super();
     this.attachShadow({mode: 'open'});
@@ -20,4 +27,5 @@ class HelloWorld extends HTMLElement {
   }
 }
 
+// カスタムエレメントの登録
 window.customElements.define('x-helloworld', HelloWorld);

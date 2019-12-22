@@ -54,7 +54,7 @@ class TodoList extends HTMLElement {
     this._containerElm = this.shadowRoot.querySelector('.container');
     this._submitElm = this.shadowRoot.querySelector('form');
     this._inputElm = this.shadowRoot.querySelector('input');
-    this._clickSubmitListener =  this._tryAdd.bind(this);
+    this._clickSubmitListener =  this._tryAddItem.bind(this);
   }
 
   /**
@@ -80,9 +80,9 @@ class TodoList extends HTMLElement {
    */
   _render() {
     // テストデータの挿入
-    this._add('TaskC', false);
-    this._add('TaskB', true);
-    this._add('TaskA', false);
+    this._addItem('TaskC', false);
+    this._addItem('TaskB', true);
+    this._addItem('TaskA', false);
   }
 
   /**
@@ -108,7 +108,7 @@ class TodoList extends HTMLElement {
    * @private
    * @param {CustomEvent} e 
    */
-  _tryAdd(e) {
+  _tryAddItem(e) {
     e.preventDefault();
     const val = this._inputElm.value;
     if (!val) {
@@ -116,7 +116,7 @@ class TodoList extends HTMLElement {
     }
     // input内を初期化
     this._inputElm.value = '';
-    this._add(val, false);
+    this._addItem(val, false);
   }
 
   /**
@@ -125,12 +125,12 @@ class TodoList extends HTMLElement {
    * @param {label} label
    * @param {boolean} checked
    */
-  _add(label, checked) {
+  _addItem(label, checked) {
     const todoElm = document.createElement('x-todo-item');
     todoElm.label = label;
     todoElm.checked = checked;
-    const onToggleListener = this._toggle.bind(this);
-    const onRemoveListener = this._remove.bind(this);
+    const onToggleListener = this._toggleItem.bind(this);
+    const onRemoveListener = this._removeItem.bind(this);
     todoElm.addEventListener('onToggle', onToggleListener);
     todoElm.addEventListener('onRemove', onRemoveListener);
     todoElm.clearListeners = () => {
@@ -146,7 +146,7 @@ class TodoList extends HTMLElement {
    * @private
    * @param {CustomEvent} e 
    */
-  _toggle(e) {
+  _toggleItem(e) {
     const target = this._findTodoItemById(e.detail.id);
     if (!target) {
       return;
@@ -159,7 +159,7 @@ class TodoList extends HTMLElement {
    * @private
    * @param {CustomEvent} e 
    */
-  _remove(e) {
+  _removeItem(e) {
     const target = this._findTodoItemById(e.detail.id);
     if (!target) {
       return;
