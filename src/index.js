@@ -2,28 +2,30 @@ import './helloworld/index.js';
 import './todoList/index.js';
 
 // DOMの取得
-const mainElm = document.querySelector('main');
-const buttonElms = document.querySelectorAll('button');
+const _mainElm = document.querySelector('main');
+const _buttonElms = document.querySelectorAll('button');
 
 /**
  * main内にアタッチされているDOMをすべて削除(念ため)
+ * @private
  */
-const clearMain = () => {
-  while (mainElm.firstChild) {
-    mainElm.removeChild(mainElm.firstChild);
+const _clearMain = () => {
+  while (_mainElm.firstChild) {
+    _mainElm.removeChild(_mainElm.firstChild);
   }
 };
 
 /**
  * 各アイテム(ボタン)をクリック
+ * @private
  * @param {CustomEvent} e
  */
-const handleItemClick = e => {
+const _handleItemClick = e => {
   // 初期化
-  clearMain();
+  _clearMain();
   // タグをmainにアタッチ
-  mainElm.appendChild(document.createElement(e.currentTarget.dataset.tagName));
+  _mainElm.appendChild(document.createElement(e.currentTarget.dataset.tagName));
 };
 
 // 各アイテム(ボタン)にイベントを設定
-[...buttonElms].forEach(item => item.addEventListener('click', handleItemClick));
+[..._buttonElms].forEach(item => item.addEventListener('click', _handleItemClick));
