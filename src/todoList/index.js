@@ -70,9 +70,8 @@ class TodoList extends HTMLElement {
    */
   disconnectedCallback() {
     this._submitElm.removeEventListener('submit', this._clickSubmitListener)
-    for (let item of this._containerElm.children) {
-      item.clearListner();
-    }
+    const todoElms = this.shadowRoot.querySelectorAll('x-todo-item');
+    [...todoElms].forEach(item => item.clearListeners())
   }
 
   /**
@@ -143,7 +142,7 @@ class TodoList extends HTMLElement {
     const onRemoveListener = this._remove.bind(this);
     todoElm.addEventListener('onToggle', onToggleListener);
     todoElm.addEventListener('onRemove', onRemoveListener);
-    todoElm.clearListner = () => {
+    todoElm.clearListeners = () => {
       todoElm.removeEventListener('onToggle', onToggleListener);
       todoElm.removeEventListener('onRemove', onRemoveListener);
     };
