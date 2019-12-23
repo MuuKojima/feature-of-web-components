@@ -12,7 +12,7 @@ template.innerHTML = `
     }
   </style>
   <div class="box">
-    <h1>ShadowDOMを無効</h1>
+    <h1>ShadowDOMでないカスタムエレメント</h1>
   <div> 
 `;
 

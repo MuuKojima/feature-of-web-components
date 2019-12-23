@@ -15,7 +15,7 @@ template.innerHTML = `
     }
   </style>
   <div class="box">
-    <h1>ShadowDOMを有効</h1>
+    <h1>ShadowDOMのカスタムエレメント</h1>
   <div>
 `;
 
