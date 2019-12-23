@@ -25,7 +25,7 @@ template.innerHTML = `
       width: 600px;
     }
   </style>
-  <h1>ShadowRootの有・無でどのような影響があるか</h1>
+  <h1>ShadowRootの有・無でどのような違いがあるか</h1>
   <p>
     ここでは通常のカスタムエレメントとShadowDOMが形成されたカスタムエレメントを比較してみる。
     ShadowDOMの場合、親からのスタイルの影響もなければ、子からも親に影響を与えていないことがわかる。

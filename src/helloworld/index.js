@@ -8,6 +8,7 @@ template.innerHTML = `
     h1 {
       font-weigh: bold;
       font-size: 50px;
+      text-align: center;
     }
   </style>
   <h1>Hello World</h1>

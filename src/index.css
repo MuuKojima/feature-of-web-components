@@ -14,7 +14,8 @@ main {
   padding: 30px;
 }
 
-x-hellowword,
+x-helloworld,
+x-lifecycle,
 x-shadow-noshadow {
   width: 700px;
 }
