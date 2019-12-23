@@ -4,6 +4,55 @@ import { LifecycleItem } from './item.js';
 const template = document.createElement('template');
 template.innerHTML = `
   <x-lifecycle-item label="LifeCycle"></x-lifecycle-item>
+  <h2>
+  ① observedAttributes
+  </h2>
+  <p>
+    window.customElements.defineでカスタムエレメントが登録されると
+    observedAttributesがコールされ、アトリビュートの変更をリッスンするための配列を返す。
+    ここでわざわざリッスンするアトリビュートを選ぶ理由は、デフォルトですべてリッスンしてしまうと、
+    オーバーヘッドが起きブラウザのパフォーマンスが良くないからである
+  </p>
+  <h2>
+    ② constructor
+  </h2>
+  <p>
+    次にコンストラクタが呼ばれ初期化処理が行われる。
+    コンスタントラクタでの責務はイベントリスナーのセットアップや、shadowRootの形成である。
+    一般的なコンスタントラクタとして使おうとする時の注意点としては、この時点ではまだattributeに値を設定するとエラーになるので注意したい。
+    実用シーンはコンスタントラクタに外から引数をもらい、attributeにセットするパターンであるが、
+    これはエラーになるので注意。解決策はconnectedCallbackでアトリビュートを操作する事
+  </p>
+  <h2>
+    ③ attributeChangedCallback
+  </h2>
+  <p>
+    コンストラクタがコールされた後に、やっとattributeの変更を受け取る事ができ、attributeChangedCallbackが呼ばれる。
+  </p>
+  <h2>
+    ④ connectedCallback
+  </h2>
+  <p>
+    タグがアタッチされると、connectedCallbackが呼ばれる
+    connectedCallbackでの責務はリソースのfetchや、レンダリングなどである
+  </p>
+  <h2>
+    ⑤ disconnectedCallback
+  </h2>
+  <p>
+    タグがデタッチされると、disconnectedCallbackが呼ばれる
+    disconnectedCallbackでの責務はイベントリスナーのremoveといった、メモリのクリーンアップを行う
+  </p>
+  <h2>
+  注意点
+  </h2>
+  <p>
+    一度でもグローバル(window)にタグが登録されていると、①は呼び出されず、②のコンストラクタからになる。(2度登録するとエラーになる)
+    コンスタントラクタはタグの初期化時に一度だけ呼ばれるが、理論上connectedCallbackはアタッチされる度に呼ばれる
+  </p>
+  <a href="https://html.spec.whatwg.org/multipage/custom-elements.html#custom-element-conformance">
+    ライフサイクルについてはWHATWGを参照
+  </a>
 `;
 
 /**
