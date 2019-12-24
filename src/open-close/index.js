@@ -15,7 +15,7 @@ template.innerHTML = `
     }
   </style>
   <h1>ShadowRootのOpenとClose</h1>
-  <button class="button">DOMを取得</button>
+  <button>DOMを取得</button>
   <x-open></x-open>
   <x-close></x-close>
 `;
@@ -38,7 +38,7 @@ class OpenClose extends HTMLElement {
    */
   connectedCallback() {
     this.clickLisnner = this.handleClick.bind(this);
-    const buttonElm = this.shadowRoot.querySelector('.button');
+    const buttonElm = this.shadowRoot.querySelector('button');
     buttonElm.addEventListener('click', this.clickLisnner);
   }
 
@@ -46,7 +46,7 @@ class OpenClose extends HTMLElement {
     * デタッチ
     */
   disconnectedCallback() {
-    const buttonElm = this.shadowRoot.querySelector('.button');
+    const buttonElm = this.shadowRoot.querySelector('button');
     buttonElm.removeEventListener('click', this.clickLisnner);
   }
 
@@ -59,14 +59,14 @@ class OpenClose extends HTMLElement {
     if (openElm.shadowRoot) {
       // ここに来る
       alert('オープンのShadowDOMを取得', openElm.shadowRoot);
-      console.log(openElm.shadowRoot);
     }
     // shadowRootはnullを返す
     if (closeElm.shadowRoot) {
       // ここには来ない
       alert('クローズのShadowDOMを取得', openElm.shadowRoot);
-      console.log(closeElm.shadowRoot);
     }
+    console.log(openElm.shadowRoot);
+    console.log(closeElm.shadowRoot);
   }
 }
 
