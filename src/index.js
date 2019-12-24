@@ -4,6 +4,7 @@ import './lifecycle/index.js';
 import './open-close/index.js';
 import './shadowdom/index.js';
 import './todoList/index.js';
+import './3ways/index.js';
 
 // DOMの取得
 const _mainElm = document.querySelector('main');
