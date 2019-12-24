@@ -60,12 +60,12 @@ class OpenClose extends HTMLElement {
       // ここに来る
       alert('オープンのShadowDOMを取得', openElm.shadowRoot);
     }
-    // shadowRootはnullを返す
     if (closeElm.shadowRoot) {
       // ここには来ない
       alert('クローズのShadowDOMを取得', openElm.shadowRoot);
     }
     console.log(openElm.shadowRoot);
+    // shadowRootはnullを返す
     console.log(closeElm.shadowRoot);
   }
 }
