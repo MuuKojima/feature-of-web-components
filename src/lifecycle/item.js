@@ -15,7 +15,7 @@ template.innerHTML = `
 `;
 
 /**
- * Lifecycleの実装クラス
+ * Lifecycleが実装されたクラス
  */
 class LifecycleItem extends HTMLElement {
   /**
@@ -56,7 +56,7 @@ class LifecycleItem extends HTMLElement {
   }
 
   /**
-   * タグのアタッチ
+   * アタッチ
    */
   connectedCallback() {
     alert('④: connectedCallback');
@@ -64,7 +64,7 @@ class LifecycleItem extends HTMLElement {
   }
 
   /**
-    * タグのデタッチ
+    * デタッチ
     */
   disconnectedCallback() {
     alert('⑤: disconnectedCallback');

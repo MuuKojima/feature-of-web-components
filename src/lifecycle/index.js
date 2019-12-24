@@ -69,7 +69,7 @@ class Lifecycle extends HTMLElement {
   }
 
   /**
-   * タグのアタッチ
+   * アタッチ
    */
   connectedCallback() {
     const elm = window.customElements.get('x-lifecycle-item');

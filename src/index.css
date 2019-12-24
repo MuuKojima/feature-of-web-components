@@ -16,6 +16,7 @@ main {
 
 x-helloworld,
 x-lifecycle,
+x-adapted-callback,
 x-shadow-noshadow {
   width: 700px;
 }
