@@ -14,7 +14,7 @@ template.innerHTML = `
     }
   </style>
   <h1>3つの生成の仕方</h1>
-  <!--  ① 宣言的に書くパターン  -->
+  <!-- ① 宣言的にタグを書くパターン -->
   <x-label label="① hello"></x-label>
 `;
 

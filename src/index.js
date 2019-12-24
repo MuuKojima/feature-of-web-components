@@ -1,4 +1,5 @@
 import './adapted-callback/index.js';
+import './extends/index.js';
 import './helloworld/index.js';
 import './lifecycle/index.js';
 import './open-close/index.js';
