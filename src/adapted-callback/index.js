@@ -22,6 +22,7 @@ template.innerHTML = `
   </style>
   <x-adapted-item></x-adapted-item>
   <div class="container">
+    <div>外側のhtml</div>
     <button class="button">移動</button>
     <iframe src="./adapted-callback/inner.html">
   </div>

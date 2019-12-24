@@ -9,8 +9,6 @@ template.innerHTML = `
       font-weigh: bold;
       font-size: 50px;
       text-align: center;
-      color: dimgray;
-      font-family: Helvetica, Arial, sans-serif;
     }
   </style>
   <h1>Adapted Callback</h1>
