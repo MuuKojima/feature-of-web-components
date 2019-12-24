@@ -1,6 +1,7 @@
+import './adapted-callback/index.js';
 import './helloworld/index.js';
 import './lifecycle/index.js';
-import './adapted-callback/index.js';
+import './open-close/index.js';
 import './shadowdom/index.js';
 import './todoList/index.js';
 
