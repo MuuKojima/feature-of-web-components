@@ -1,23 +1,7 @@
-// テンプレートタグの作成
-const template = document.createElement('template');
-template.innerHTML = `
-  <style>
-    :host {
-      display: block;
-    }
-    h1 {
-      font-weigh: bold;
-      font-size: 50px;
-      text-align: center;
-    }
-  </style>
-  <h1 class="label"></h1>
-`;
-
 /**
  * Lifecycleが実装されたクラス
  */
-class LifecycleItem extends HTMLElement {
+export default class LifecycleItem extends HTMLElement {
   /**
    * アトリビュートの変更を購読するホワイトリストの作成
    */
@@ -43,16 +27,26 @@ class LifecycleItem extends HTMLElement {
   constructor() {
     super();
     alert('②: constructor');
-    this._label = '';
-    this.attachShadow({mode: 'open'});
-    this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
 
   /**
    * 描画
    */
   _render() {
-    this.shadowRoot.querySelector('.label').textContent = this._label;
+    this.innerHTML = `
+      <style>
+        :host {
+          display: block;
+        }
+        h1 {
+          font-weigh: bold;
+          font-size: 50px;
+          text-align: center;
+        }
+      </style>
+      <h1 class="label"></h1>
+    `;
+    this.querySelector('.label').textContent = this._label;
   }
 
   /**
@@ -74,10 +68,6 @@ class LifecycleItem extends HTMLElement {
    * オーナードキュメントが移った時
    */
   adoptedCallback() {
-    // こちらは呼び出すのが難しいので、ここだけ切り出してデモで説明
+    // こちらは呼び出すのが難しいので、ここだけ切り出して解説
   }
-}
-
-export {
-  LifecycleItem
 }
