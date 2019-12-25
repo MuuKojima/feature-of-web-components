@@ -1,20 +1,21 @@
 # 概要
 
+# デモ
+
+https://example-61f5d.firebaseapp.com/
+
 # Hello World
 
-<img src="https://user-images.githubusercontent.com/3895795/71449411-30c14300-278f-11ea-93c5-0afd35503e0f.png" width="300"></img>
+<img src="https://user-images.githubusercontent.com/3895795/71449951-8dc2f600-279b-11ea-9ca5-592a2947afe9.png" width="300"></img>
 
 シンプルな `CustomElements` で `HelloWorld` を表示する <br>
-`connectedCallback`ではリソースの `fetch` や `rendering` を行う<br>
-WAHTWGを参照<br>
-https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-autonomous-example
-https://html.spec.whatwg.org/multipage/custom-elements.html#custom-element-conformance
 
 # LifeCycle(Adapted Callback以外)
 
 <img src="https://user-images.githubusercontent.com/3895795/71449549-edb49f00-2791-11ea-8270-c9f52baba74f.gif" width="300"></img>
 
 `CustomElements`におけるライフサイクル(`Adapted Callback`以外)を試す<br>
+`Adapted Callback`は通常発火しない<br>
 発火順は以下に記載
 
 ```
@@ -67,12 +68,62 @@ https://html.spec.whatwg.org/multipage/custom-elements.html#custom-element-confo
 
 # Initialize 3 ways
 
+<img src="https://user-images.githubusercontent.com/3895795/71450003-71738900-279c-11ea-9e8c-ad80be309b44.png" width="300"></img>
+
+カスタムエレメントを生成する方法は主に3つあるので実装
+
+① 宣言的にタグを書くパターン
+```
+<body>
+  <x-foo label="hello"><x-foo>
+</body>
+```
+
+② DOM APIを使うパターン
+```
+const elm = document.createElement('x-foo');
+elm.label = 'hello';
+document.body.appendChild(elm);
+```
+
+③ new 演算子を使うパターン
+
+```
+const Foo = window.customElements.get('x-foo');
+document.body.appendChild(new Foo('hello'));
+```
+
 # ShadowRootを有効 or 無効
+
+<img src="https://user-images.githubusercontent.com/3895795/71450058-800e7000-279d-11ea-8ac8-b5036ffd9394.png" width="300"></img>
+
+ここでは通常のカスタムエレメントと`ShadowDOM` が形成されたカスタムエレメントを比較してみる。<br>
+ShadowDOMでないカスタムエレメントの場合はスタイルが後勝ちになり、親の`h1`要素が子の`h1`要素のスタイルになってしまっている。サイズが小さくなり、色が青になっている。
+`ShadowDOM` の場合、親からのスタイルの影響もなければ、子からも親に影響を与えていないことがわかる。
 
 # ShadowRootのOpen or Close
 
+<img src="https://user-images.githubusercontent.com/3895795/71450087-235f8500-279e-11ea-8391-9768d8f1ba3c.gif" width="300"></img>
+
+`ShadowRoot` には `mode` が `open` か `closed`かを選ぶ事ができる<br>
+`open`は `shadowRoot`が取れるが`closed`は`shadwoRoot`にアクセスすると`null`が返る<br>
+gooleによれば、`closed`は`非推奨`だが `chrome` が堂々と `closed`を使っているは謎が深い<br>
+Googleのclosed非推奨のリンク<br>
+https://developers.google.com/web/fundamentals/web-components/shadowdom?hl=ja#advanced<br>
+Chromeがclosed使っているリンク
+https://github.com/chromium/chromium/blob/6f13c35b976901ac184b2d731a7b5e722b8cb2b0/third_party/blink/renderer/core/script/resources/layered_api/elements/switch/index.mjs#L129
+
 # Template
+
+
 
 # Slot
 
 # Todo List
+
+# 備考
+
+`connectedCallback`ではリソースの `fetch` や `rendering` を行う<br>
+WAHTWGを参照<br>
+https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-autonomous-example
+https://html.spec.whatwg.org/multipage/custom-elements.html#custom-element-conformance
