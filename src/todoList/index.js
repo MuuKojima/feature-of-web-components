@@ -43,7 +43,7 @@ template.innerHTML = `
 /**
  * TodoListのルートクラス
  */
-class TodoList extends HTMLElement {
+export default class TodoList extends HTMLElement {
   /**
    * コンストラクタ
    */

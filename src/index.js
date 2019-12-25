@@ -5,6 +5,7 @@ import './lifecycle/index.js';
 import './open-close/index.js';
 import './shadowdom/index.js';
 import './todoList/index.js';
+import './template/index.js';
 import './3ways/index.js';
 
 // DOMの取得

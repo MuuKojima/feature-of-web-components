@@ -34,7 +34,7 @@ template.innerHTML = `
 /**
  * TodoListのアイテムクラス
  */
-class Todo extends HTMLElement {
+export default class Todo extends HTMLElement {
   /**
    * アトリビュートの変更を購読するホワイトリストの作成
    */
