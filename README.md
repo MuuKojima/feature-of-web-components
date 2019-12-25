@@ -115,11 +115,34 @@ https://github.com/chromium/chromium/blob/6f13c35b976901ac184b2d731a7b5e722b8cb2
 
 # Template
 
+<img src="https://user-images.githubusercontent.com/3895795/71450152-666e2800-279f-11ea-9683-ad333884e029.png" width="300"></img>
 
+テンプレートタグの実装<br>
+`template` タグが画面に描画されても、画面上は存在しない<br>
+またアクティベートされるまで、中のコンテンツは描画もされなければ<br>
+中の画像リソース等も読み込まない
+
+画面に置いても描画もされないし、リソースも取得されない
+```
+<template>
+  <h1>hello</h1>
+  <img src="https://foo.png"></img>
+</template>
+```
 
 # Slot
 
+<img src="https://user-images.githubusercontent.com/3895795/71450188-1c397680-27a0-11ea-8c07-7e244eb219a0.gif" width="300"></img>
+
+`slot` タグを用いて、外からコンテンツを挿入できる<br>
+尚、`slot` は`shadowRoot`がないと機能しない<br>
+
 # Todo List
+
+<img src="https://user-images.githubusercontent.com/3895795/71450211-9538ce00-27a0-11ea-820a-3ef59e583bb7.gif" width="300"></img>
+
+9つのサンプルの内容を組み合わせた簡単なアプリケーションの実装<br>
+`Web Components`はただのUI部品を超えていける<br>
 
 # 備考
 
