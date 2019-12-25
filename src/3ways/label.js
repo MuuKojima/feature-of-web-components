@@ -1,23 +1,7 @@
-// テンプレートタグの作成
-const template = document.createElement('template');
-template.innerHTML = `
-  <style>
-    :host {
-      display: block;
-    }
-    h1 {
-      font-weigh: bold;
-      font-size: 50px;
-      text-align: center;
-    }
-  </style>
-  <h1></h1>
-`;
-
 /**
  * Labelクラス
  */
-class Label extends HTMLElement {
+export default class Label extends HTMLElement {
   /**
    * アトリビュートの変更を購読するホワイトリストの作成
    */
@@ -35,21 +19,19 @@ class Label extends HTMLElement {
     switch(name){
       case 'label':
         this._label = newValue;
+        this._render();
         break;
       default:
         break;
     }
-    this._render();
-  }  
+  }
 
   /**
    * コンストラクタ
    */
   constructor(label) {
     super();
-    this.attachShadow({mode: 'open'});
-    this.shadowRoot.appendChild(template.content.cloneNode(true));
-    this._label = Boolean(label) ? label : '';
+    this._label = label || '';
   }
 
   /**
@@ -65,8 +47,7 @@ class Label extends HTMLElement {
    * @private
    */
   _render() {
-    const titleElm = this.shadowRoot.querySelector('h1');
-    titleElm.textContent = this._label;
+    this.innerHTML = `<h1>${this._label}</h1>`;
   }
 
   set label(val) {

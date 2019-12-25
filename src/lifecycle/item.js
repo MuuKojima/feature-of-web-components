@@ -18,7 +18,13 @@ export default class LifecycleItem extends HTMLElement {
    */
   attributeChangedCallback(name, oldValue, newValue) {
     alert('③: attributeChangedCallback');
-    this._label = newValue;
+    switch(name){
+      case 'label':
+        this._label = newValue;
+        break;
+      default:
+        break;
+    }
   }
 
   /**
