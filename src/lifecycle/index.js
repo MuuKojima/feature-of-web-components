@@ -5,13 +5,6 @@ import LifecycleItem from './item.js';
  */
 export default class Lifecycle extends HTMLElement {
   /**
-   * コンストラクタ
-   */
-  constructor() {
-    super();
-  }
-
-  /**
    * アタッチ
    */
   connectedCallback() {

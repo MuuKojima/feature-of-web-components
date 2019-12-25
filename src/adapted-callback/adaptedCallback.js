@@ -3,13 +3,6 @@
  */
 export default class AdaptedItem extends HTMLElement {
   /**
-   * コンストラクタ
-   */
-  constructor() {
-    super();
-  }
-
-  /**
    * アタッチ
    */
   connectedCallback() {

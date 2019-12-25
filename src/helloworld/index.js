@@ -3,13 +3,6 @@
  */
 export default class HelloWorld extends HTMLElement {
   /**
-   * コンストラクタ
-   */
-  constructor() {
-    super();
-  }
-
-  /**
    * アタッチ
    */
   connectedCallback () {

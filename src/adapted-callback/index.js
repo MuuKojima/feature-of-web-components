@@ -5,13 +5,6 @@ import './adaptedCallback.js';
  */
 export default class AdaptedCallback extends HTMLElement {
   /**
-   * コンストラクタ
-   */
-  constructor() {
-    super();
-  }
-
-  /**
    * アタッチ
    */
   connectedCallback() {
