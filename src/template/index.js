@@ -12,6 +12,7 @@ export default class Template extends HTMLElement {
    * アタッチ
    */
   connectedCallback() {
+    // cloneNodeでテンプレートをアクティベート
     this.appendChild(template.content.cloneNode(true));
   }
 }
