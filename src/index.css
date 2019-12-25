@@ -38,3 +38,9 @@ x-todo-list {
 button {
   margin-right: 10px;
 }
+
+h1 {
+  font-weight: bold;
+  font-size: 50px;
+  text-align: center;
+}
