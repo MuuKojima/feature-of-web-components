@@ -1,44 +1,22 @@
 import './close.js';
 import './open.js';
 
-// テンプレートタグの作成
-const template = document.createElement('template');
-template.innerHTML = `
-  <style>
-    :host {
-      display: block;
-    }
-    h1 {
-      font-weigh: bold;
-      font-size: 50px;
-      text-align: center;
-    }
-  </style>
-  <h1>ShadowRootのOpenとClose</h1>
-  <button>DOMを取得</button>
-  <x-open></x-open>
-  <x-close></x-close>
-`;
-
 /**
  * OpenCloseのテストクラス
  */
-class OpenClose extends HTMLElement {
-  /**
-   * コンストラクタ
-   */
-  constructor() {
-    super();
-    this.attachShadow({mode: 'open'});
-    this.shadowRoot.appendChild(template.content.cloneNode(true));
-  }
-
+export default class OpenClose extends HTMLElement {
   /**
    * アタッチ
    */
   connectedCallback() {
+    this.innerHTML = `
+      <h1>ShadowRootのOpenとClose</h1>
+      <button>DOMを取得</button>
+      <x-open></x-open>
+      <x-close></x-close>
+    `;
     this.clickLisnner = this.handleClick.bind(this);
-    const buttonElm = this.shadowRoot.querySelector('button');
+    const buttonElm = this.querySelector('button');
     buttonElm.addEventListener('click', this.clickLisnner);
   }
 
@@ -46,7 +24,7 @@ class OpenClose extends HTMLElement {
     * デタッチ
     */
   disconnectedCallback() {
-    const buttonElm = this.shadowRoot.querySelector('button');
+    const buttonElm = this.querySelector('button');
     buttonElm.removeEventListener('click', this.clickLisnner);
   }
 
@@ -54,8 +32,8 @@ class OpenClose extends HTMLElement {
    * ボタンのクリック
    */
   handleClick() {
-    const openElm = this.shadowRoot.querySelector('x-open');
-    const closeElm = this.shadowRoot.querySelector('x-close');
+    const openElm = this.querySelector('x-open');
+    const closeElm = this.querySelector('x-close');
     if (openElm.shadowRoot) {
       // ここに来る
       alert('オープンのShadowDOMを取得', openElm.shadowRoot);
