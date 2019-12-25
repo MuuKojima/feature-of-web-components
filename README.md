@@ -5,7 +5,7 @@
 <img src="https://user-images.githubusercontent.com/3895795/71449411-30c14300-278f-11ea-93c5-0afd35503e0f.png" width="300"></img>
 
 シンプルな `CustomElements` で `HelloWorld` を表示する <br>
-`connectedCallback `ではリソースの `fetch` や `rendering` を行う<br>
+`connectedCallback`ではリソースの `fetch` や `rendering` を行う<br>
 WAHTWGを参照<br>
 https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-autonomous-example
 https://html.spec.whatwg.org/multipage/custom-elements.html#custom-element-conformance
