@@ -3,10 +3,9 @@
  */
 class NOShadow extends HTMLElement {
   /**
-   * コンストラクタ
+   * アタッチ
    */
-  constructor() {
-    super();
+  connectedCallback() {
     this.innerHTML = `
       <style>
         h1 {

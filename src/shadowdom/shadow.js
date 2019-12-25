@@ -7,7 +7,14 @@ export default class Shadow extends HTMLElement {
    */
   constructor() {
     super();
+    // shadowRootに形成はコンスタントラクタが推奨されている
     this.attachShadow({mode: 'open'});
+  }
+
+  /**
+   * アタッチ
+   */
+  connectedCallback() {
     this.shadowRoot.innerHTML = `
       <style>
         :host {
