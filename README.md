@@ -1,7 +1,3 @@
-# Mastering Web Components
-
-<img src="https://user-images.githubusercontent.com/3895795/71449369-408c5780-278e-11ea-8de7-860881ee54a1.png" width="300"></img>
-
 # 概要
 
 # Hello World
