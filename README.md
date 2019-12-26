@@ -8,8 +8,7 @@ Custom Elements
 HTML Templates
  ┗ tenplateタグを用いた再利用
 (ESModule)
- ┗ 廃止になる html importsの変わりで、厳密にはwebcomponentsの仕様ではないが、ここに登場する事が多い。
- ┗ moduleとして、jsファイルを読み込む
+ ┗ 廃止になる html importsの変わりで、厳密にはwebcomponentsの仕様ではないが、ここに登場する事が多い。 moduleとして、jsファイルを読み込む
 ```
 仕様w3c
 https://github.com/w3c/webcomponents
