@@ -1,7 +1,24 @@
-# 概要
+# Mastering Web Components
+
+```
+Shadow DOM
+ ┗ カプセル化
+Custom Elements
+ ┗ 自前のhtmlタグの定義及び使用
+HTML Templates
+ ┗ tenplateタグを用いた再利用
+(ESModule)
+ ┗ 廃止になる html importsの変わりで、厳密にはwebcomponentsの仕様ではないが、ここに登場する事が多い。
+ ┗ moduleとして、jsファイルを読み込む
+```
+仕様w3c
+https://github.com/w3c/webcomponents
+
+Shadow DOM
 
 # デモ
 
+ホスティング先
 https://example-61f5d.firebaseapp.com/
 
 # Hello World
