@@ -1,5 +1,5 @@
 /**
- * ShadowRootを有効にしたクラス
+ * ShadowRoot enabled class
  */
 export default class Shadow extends HTMLElement {
   /**
@@ -7,7 +7,7 @@ export default class Shadow extends HTMLElement {
    */
   constructor() {
     super();
-    // shadowRootに形成はコンスタントラクタが推奨されている
+    // Constructor is recommended for forming shadowRoot
     this.attachShadow({mode: 'open'});
   }
 
@@ -23,6 +23,7 @@ export default class Shadow extends HTMLElement {
         h1 {
           font-size: 30px;
           color: #d51b5a;
+          text-align: center;
         }
         .box-shadow {
           border: 1px solid lightgray;
@@ -30,7 +31,7 @@ export default class Shadow extends HTMLElement {
         }
       </style>
       <div class="box-shadow">
-        <h1>ShadowDOMのカスタムエレメント</h1>
+        <h1>Enable of ShadowRoot</h1>
       <div>
     `;
   }

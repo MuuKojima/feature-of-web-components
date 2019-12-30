@@ -1,5 +1,5 @@
 /**
- * ShadowRootを無効にしたクラス(通常のカスタムエレメント)
+ * ShadowRoot disabled class
  */
 class NOShadow extends HTMLElement {
   /**
@@ -18,7 +18,7 @@ class NOShadow extends HTMLElement {
         }
       </style>
       <div class="box-noshadow">
-        <h1>ShadowDOMでないカスタムエレメント</h1>
+        <h1>Disable of ShadowRoot</h1>
       <div> 
     `;
   }

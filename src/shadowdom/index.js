@@ -2,7 +2,7 @@ import './noshadow.js';
 import './shadow.js';
 
 /**
- * ShadowRootを有効or無効にしたタグをAttachするための、Appクラス
+ * ShadowRoot testing class
  */
 export default class ShadowNoShadow extends HTMLElement {
   /**
@@ -23,12 +23,7 @@ export default class ShadowNoShadow extends HTMLElement {
           width: 600px;
         }
       </style>
-      <h1>ShadowRootの有・無でどのような違いがあるか</h1>
-      <p>
-        ここでは通常のカスタムエレメントとShadowDOMが形成されたカスタムエレメントを比較してみる。
-        ShadowDOMの場合、親からのスタイルの影響もなければ、子からも親に影響を与えていないことがわかる。
-        一方で、ShadowDOMでないカスタムエレメントの場合は後勝ちになり、親のh1要素が子のh1要素のスタイルになってしまっている。サイズが小さくなり、色が青になっている。
-      </p>
+      <h1>Enable or Disable of ShadowRoot</h1>
       <div class="container">
         <x-noshadow></x-noshadow>
         <x-shadow><x-shadow>
