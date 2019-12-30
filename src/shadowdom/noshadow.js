@@ -18,7 +18,7 @@ class NOShadow extends HTMLElement {
         }
       </style>
       <div class="box-noshadow">
-        <h1>Disable of ShadowRoot</h1>
+        <h1>Disable ShadowRoot</h1>
       <div> 
     `;
   }
