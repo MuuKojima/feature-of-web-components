@@ -40,7 +40,7 @@ export default class XSlot extends HTMLElement {
   }
 
   /**
-   * アタッチ
+   * Attach
    */
   connectedCallback() {
     this._signinBtnElm.addEventListener('click', this._onSigninClickLisnner);
@@ -48,7 +48,7 @@ export default class XSlot extends HTMLElement {
   }
 
   /**
-   * デタッチ
+   * Detach
    */
   disconnectedCallback() {
     this._signinBtnElm.removeEventListener('click', this._onSigninClickLisnner);
@@ -84,5 +84,5 @@ export default class XSlot extends HTMLElement {
   }
 }
 
-// カスタムエレメントの登録
+// Register custom element
 window.customElements.define('x-slot', XSlot);

@@ -6,7 +6,7 @@ import './open.js';
  */
 export default class OpenClose extends HTMLElement {
   /**
-   * アタッチ
+   * Attach
    */
   connectedCallback() {
     this.innerHTML = `
@@ -21,7 +21,7 @@ export default class OpenClose extends HTMLElement {
   }
 
   /**
-    * デタッチ
+    * Detach
     */
   disconnectedCallback() {
     const buttonElm = this.querySelector('button');
@@ -48,5 +48,5 @@ export default class OpenClose extends HTMLElement {
   }
 }
 
-// カスタムエレメントの登録
+// Register custom element
 window.customElements.define('x-open-close', OpenClose);

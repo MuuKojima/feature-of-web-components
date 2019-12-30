@@ -9,12 +9,12 @@ import './todoList/index.js';
 import './template/index.js';
 import './3ways/index.js';
 
-// DOMの取得
+// Get DOM
 const _mainElm = document.querySelector('main');
 const _buttonElms = document.querySelectorAll('button');
 
 /**
- * main内にアタッチされているDOMをすべて削除(念ため)
+ * Remove DOM
  * @private
  */
 const _clearMain = () => {
@@ -24,16 +24,16 @@ const _clearMain = () => {
 };
 
 /**
- * 各アイテム(ボタン)をクリック
+ * Click each item
  * @private
  * @param {CustomEvent} e
  */
-const _handleItemClick = e => {
-  // 初期化
+const handleItemClick = e => {
+  // Initialize
   _clearMain();
-  // タグをmainにアタッチ
+  // Attach the tag to main
   _mainElm.appendChild(document.createElement(e.currentTarget.dataset.tagName));
 };
 
-// 各アイテム(ボタン)にイベントを設定
-[..._buttonElms].forEach(item => item.addEventListener('click', _handleItemClick));
+// Set an event for each item
+[..._buttonElms].forEach(item => item.addEventListener('click', handleItemClick));

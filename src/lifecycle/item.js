@@ -44,7 +44,7 @@ export default class LifecycleItem extends HTMLElement {
   }
 
   /**
-   * アタッチ
+   * Attach
    */
   connectedCallback() {
     alert('④: connectedCallback');
@@ -52,7 +52,7 @@ export default class LifecycleItem extends HTMLElement {
   }
 
   /**
-    * デタッチ
+    * Detach
     */
   disconnectedCallback() {
     alert('⑤: disconnectedCallback');

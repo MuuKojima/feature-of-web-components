@@ -58,7 +58,7 @@ export default class TodoList extends HTMLElement {
   }
 
   /**
-   * アタッチ
+   * Attach
    */
   connectedCallback() {
     this._submitElm.addEventListener('submit', this._clickSubmitListener);
@@ -66,7 +66,7 @@ export default class TodoList extends HTMLElement {
   }
 
   /**
-   * デタッチ
+   * Detach
    */
   disconnectedCallback() {
     this._submitElm.removeEventListener('submit', this._clickSubmitListener)
@@ -164,5 +164,5 @@ export default class TodoList extends HTMLElement {
   }
 }
 
-// カスタムエレメントの登録
+// Register custom element
 window.customElements.define('x-todo-list', TodoList);

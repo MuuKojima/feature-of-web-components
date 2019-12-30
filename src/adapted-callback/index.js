@@ -5,7 +5,7 @@ import './adaptedCallback.js';
  */
 export default class AdaptedCallback extends HTMLElement {
   /**
-   * アタッチ
+   * Attach
    */
   connectedCallback() {
     this.innerHTML = `
@@ -25,8 +25,8 @@ export default class AdaptedCallback extends HTMLElement {
       </style>
       <x-adapted-item></x-adapted-item>
       <div class="container">
-        <div>外側のhtml</div>
-        <button class="button">移動</button>
+        <div>Outer html</div>
+        <button class="button">move</button>
         <iframe src="./adapted-callback/inner.html">
       </div>
     `;
@@ -36,7 +36,7 @@ export default class AdaptedCallback extends HTMLElement {
   }
 
   /**
-    * デタッチ
+    * Detach
     */
   disconnectedCallback() {
     const buttonElm = this.querySelector('.button');
@@ -53,5 +53,5 @@ export default class AdaptedCallback extends HTMLElement {
   }
 }
 
-// カスタムエレメントの登録
+// Register custom element
 window.customElements.define('x-adapted-callback', AdaptedCallback);

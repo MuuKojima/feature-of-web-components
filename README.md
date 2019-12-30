@@ -61,16 +61,16 @@ observedAttributesがコールされ、アトリビュートの変更をリッ�
 コンストラクタがコールされた後に、やっとattributeの変更を受け取る事ができ、attributeChangedCallbackが呼ばれる。
 
 ④ connectedCallback
-タグがアタッチされると、connectedCallbackが呼ばれる
+タグがAttachされると、connectedCallbackが呼ばれる
 connectedCallbackでの責務はリソースのfetchや、レンダリングなどである
 
 ⑤ disconnectedCallback
-タグがデタッチされると、disconnectedCallbackが呼ばれる
+タグがDetachされると、disconnectedCallbackが呼ばれる
 disconnectedCallbackでの責務はイベントリスナーのremoveといった、メモリのクリーンアップを行う
 
 ※注意点
 一度でもグローバル(window)にタグが登録されていると、①は呼び出されず、②のコンストラクタからになる。(2度登録するとエラーになる)
-コンスタントラクタはタグの初期化時に一度だけ呼ばれるが、理論上connectedCallbackはアタッチされる度に呼ばれる
+コンスタントラクタはタグの初期化時に一度だけ呼ばれるが、理論上connectedCallbackはAttachされる度に呼ばれる
 ```
 
 ライフサイクルについてはWHATWGを参照<br>

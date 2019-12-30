@@ -9,7 +9,7 @@ template.innerHTML = `
  */
 export default class Template extends HTMLElement {
   /**
-   * アタッチ
+   * Attach
    */
   connectedCallback() {
     // cloneNodeでテンプレートをアクティベート
@@ -17,5 +17,5 @@ export default class Template extends HTMLElement {
   }
 }
 
-// カスタムエレメントの登録
+// Register custom element
 window.customElements.define('x-template', Template);

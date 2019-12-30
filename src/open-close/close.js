@@ -21,5 +21,5 @@ class Close extends HTMLElement {
   }
 }
 
-// カスタムエレメントの登録
+// Register custom element
 window.customElements.define('x-close', Close);

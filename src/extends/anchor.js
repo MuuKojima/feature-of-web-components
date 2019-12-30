@@ -3,7 +3,7 @@
  */
 export default class ConfirmAnchor extends HTMLAnchorElement {
   /**
-   * アタッチ
+   * Attach
    */
   connectedCallback() {
     this.clickLisnner = e => {
@@ -17,13 +17,13 @@ export default class ConfirmAnchor extends HTMLAnchorElement {
   }
 
   /**
-   * デタッチ
+   * Detach
    */
   disconnectedCallback() {
     this.removeEventListener('click', this.clickLisnner);
   }
 }
 
-// カスタムエレメントの登録
+// Register custom element
 // 既存タグを継承した場合は第3引数を追加
 customElements.define('x-confirm-anchor', ConfirmAnchor, { extends: 'a' });

@@ -80,7 +80,7 @@ export default class Todo extends HTMLElement {
   }
 
   /**
-   * アタッチ
+   * Attach
    */
   connectedCallback() {
     this._checkBoxElm.addEventListener('click', this._toggleListener);
@@ -89,7 +89,7 @@ export default class Todo extends HTMLElement {
   }
 
   /**
-   * デタッチ
+   * Detach
    */
   disconnectedCallback() {
     this._checkBoxElm.removeEventListener('click', this._toggleListener)
@@ -185,5 +185,5 @@ export default class Todo extends HTMLElement {
   }
 }
 
-// カスタムエレメントの登録
+// Register custom element
 window.customElements.define('x-todo-item', Todo);

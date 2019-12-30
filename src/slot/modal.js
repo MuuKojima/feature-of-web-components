@@ -28,14 +28,14 @@ export default class XSlot extends HTMLElement {
   }
 
   /**
-   * アタッチ
+   * Attach
    */
   connectedCallback() {
     this._closeElm.addEventListener('click', this._onCloseLisner);
   }
 
   /**
-   * デタッチ
+   * Detach
    */
   disconnectedCallback() {
     this._closeElm.removeEventListener('click', this._onCloseLisner);
@@ -50,5 +50,5 @@ export default class XSlot extends HTMLElement {
   }
 }
 
-// カスタムエレメントの登録
+// Register custom element
 window.customElements.define('x-modal', XSlot);

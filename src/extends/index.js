@@ -5,7 +5,7 @@ import './anchor.js';
  */
 export default class XExtends extends HTMLElement {
   /**
-   * アタッチ
+   * Attach
    */
   connectedCallback() {
     this.innerHTML = `
@@ -25,5 +25,5 @@ export default class XExtends extends HTMLElement {
   }
 }
 
-// カスタムエレメントの登録
+// Register custom element
 window.customElements.define('x-extends', XExtends);

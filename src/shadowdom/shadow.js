@@ -12,7 +12,7 @@ export default class Shadow extends HTMLElement {
   }
 
   /**
-   * アタッチ
+   * Attach
    */
   connectedCallback() {
     this.shadowRoot.innerHTML = `
@@ -36,5 +36,5 @@ export default class Shadow extends HTMLElement {
   }
 }
 
-// カスタムエレメントの登録
+// Register custom element
 window.customElements.define('x-shadow', Shadow);

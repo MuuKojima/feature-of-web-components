@@ -3,7 +3,7 @@
  */
 export default class AdaptedItem extends HTMLElement {
   /**
-   * アタッチ
+   * Attach
    */
   connectedCallback() {
     this.innerHTML = '<h1>Adapted Callback</h1>';
@@ -18,5 +18,5 @@ export default class AdaptedItem extends HTMLElement {
   }
 }
 
-// カスタムエレメントの登録
+// Register custom element
 window.customElements.define('x-adapted-item', AdaptedItem);

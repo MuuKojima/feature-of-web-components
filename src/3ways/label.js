@@ -35,7 +35,7 @@ export default class Label extends HTMLElement {
   }
 
   /**
-   * アタッチ
+   * Attach
    */
   connectedCallback() {
     // new オペレーターで初期化された場合はコンスタントラクタ以降でアトリビュートを操作しないとエラーになる
@@ -59,5 +59,5 @@ export default class Label extends HTMLElement {
   }
 }
 
-// カスタムエレメントの登録
+// Register custom element
 window.customElements.define('x-label', Label);

@@ -5,7 +5,7 @@ import './label.js'
  */
 export default class X3ways extends HTMLElement {
   /**
-   * アタッチ
+   * Attach
    */
   connectedCallback() {
     this._render();
@@ -33,5 +33,5 @@ export default class X3ways extends HTMLElement {
   }
 }
 
-// カスタムエレメントの登録
+// Register custom element
 window.customElements.define('x-3ways', X3ways);

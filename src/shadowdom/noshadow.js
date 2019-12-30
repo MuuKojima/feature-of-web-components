@@ -3,7 +3,7 @@
  */
 class NOShadow extends HTMLElement {
   /**
-   * アタッチ
+   * Attach
    */
   connectedCallback() {
     this.innerHTML = `
@@ -24,5 +24,5 @@ class NOShadow extends HTMLElement {
   }
 }
 
-// カスタムエレメントの登録
+// Register custom element
 window.customElements.define('x-noshadow', NOShadow);

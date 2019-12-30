@@ -2,11 +2,11 @@ import './noshadow.js';
 import './shadow.js';
 
 /**
- * ShadowRootを有効or無効にしたタグをアタッチするための、Appクラス
+ * ShadowRootを有効or無効にしたタグをAttachするための、Appクラス
  */
 export default class ShadowNoShadow extends HTMLElement {
   /**
-   * アタッチ
+   * Attach
    */
   connectedCallback() {
     this.innerHTML = `
@@ -37,5 +37,5 @@ export default class ShadowNoShadow extends HTMLElement {
   }
 }
 
-// カスタムエレメントの登録
+// Register custom element
 window.customElements.define('x-shadow-noshadow', ShadowNoShadow);
