@@ -1,6 +1,6 @@
 import './modal.js';
 
-// Creating template tag
+// Create template tag
 const template = document.createElement('template');
 template.innerHTML = `
   <style>

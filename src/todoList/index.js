@@ -1,6 +1,6 @@
 import './item.js';
 
-// テンプレートタグの作成
+// Create template tag
 const template = document.createElement('template');
 template.innerHTML = `
   <style>
@@ -41,7 +41,7 @@ template.innerHTML = `
 `;
 
 /**
- * TodoListのルートクラス
+ * TodoList class
  */
 export default class TodoList extends HTMLElement {
   /**
@@ -79,14 +79,14 @@ export default class TodoList extends HTMLElement {
    * @private
    */
   _render() {
-    // テストデータの挿入
+    // Insert test data
     this._addItem('TaskC', false);
     this._addItem('TaskB', true);
     this._addItem('TaskA', false);
   }
 
   /**
-   * TodoアイテムをIDから取得する
+   * Find Todo item from ID
    * @private
    * @param {string} id
    * @returns {Element | undefined}
@@ -98,7 +98,7 @@ export default class TodoList extends HTMLElement {
   }
 
   /**
-   * アイテムの追加を試みる
+   * Try add todoItem
    * @private
    * @param {CustomEvent} e 
    */
@@ -108,13 +108,13 @@ export default class TodoList extends HTMLElement {
     if (!val) {
       return;
     }
-    // input内を初期化
+    // Initialize input
     this._inputElm.value = '';
     this._addItem(val, false);
   }
 
   /**
-   * アイテムを追加する
+   * Add todo item
    * @private
    * @param {label} label
    * @param {boolean} checked
@@ -131,12 +131,12 @@ export default class TodoList extends HTMLElement {
       todoElm.removeEventListener('onToggle', onToggleListener);
       todoElm.removeEventListener('onRemove', onRemoveListener);
     };
-    // コンテナ内の先頭にTodoアイテムを追加
+    // Add Todo items to the top of the container
     this._containerElm.insertBefore(todoElm, this._containerElm.firstChild);
   }
 
   /**
-   * アイテムのチェックをトグルする
+   * Toggle todo item for check mark
    * @private
    * @param {CustomEvent} e 
    */
@@ -145,12 +145,12 @@ export default class TodoList extends HTMLElement {
     if (!item) {
       return;
     }
-    // チェックを反転させる
+    // Toggle check mark
     item.checked = !item.checked;
   }
 
   /**
-   * アイテムを削除する
+   * Remove todo item form todolist
    * @private
    * @param {CustomEvent} e 
    */
@@ -159,7 +159,7 @@ export default class TodoList extends HTMLElement {
     if (!item) {
       return;
     }
-    // 要素を削除
+    // Remove target todo item 
     this._containerElm.removeChild(item);
   }
 }

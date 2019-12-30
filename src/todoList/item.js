@@ -1,4 +1,4 @@
-// テンプレートタグの作成
+// Create template tag
 const template = document.createElement('template');
 template.innerHTML = `
   <style>
@@ -32,7 +32,7 @@ template.innerHTML = `
 `;
 
 /**
- * TodoListのアイテムクラス
+ * TodoItem class
  */
 export default class Todo extends HTMLElement {
   /**
@@ -107,8 +107,8 @@ export default class Todo extends HTMLElement {
   }
 
   /**
-   * ランダムなIDを生成
-   * (UUIDを作ろうとすると、コードが長くなるので、ここでは割愛)
+   * Create Random ID
+   * If you try to create a UUID, the code will be long, so I will omit it here
    * @private
    * @returns {string}
    */
@@ -117,7 +117,7 @@ export default class Todo extends HTMLElement {
   }
 
   /**
-   * アイテムのチェックがトグルされた事を通知
+   * Dispatch that item check has been toggled
    * @private
    */
   _dispatchToggle() {
@@ -131,7 +131,7 @@ export default class Todo extends HTMLElement {
   }
 
   /**
-   * アイテムが削除された事を通知
+   * Dispatch that item has been removed
    * @private
    */
   _dispatchRemove() {
@@ -145,7 +145,7 @@ export default class Todo extends HTMLElement {
   }
 
   /**
-   * idの取得
+   * Get id
    * @returns {string} id
    */
   get id() {
@@ -153,7 +153,7 @@ export default class Todo extends HTMLElement {
   }
 
   /**
-   * ラベルをセット
+   * Set label
    * @param {string} val
    */
   set label(val) {
@@ -173,7 +173,7 @@ export default class Todo extends HTMLElement {
   }
 
   /**
-   * チェックをセット
+   * Checked or not
    * @param {boolean} val
    */
   set checked(val) {
