@@ -1,7 +1,7 @@
 import './anchor.js';
 
 /**
- * 継承をテストするクラス
+ * Extends testing class
  */
 export default class XExtends extends HTMLElement {
   /**
@@ -15,10 +15,10 @@ export default class XExtends extends HTMLElement {
           text-align: center;
         }
       </style>
-      <h1>既存のUIパーツを継承する</h1>
+      <h1>Extend existing UI parts</h1>
       <!-- 
-        is 属性を使いカスタムエレメントを適用する
-        もしくは、new オペレーター, DOM APIでも生成する事が出来る
+        Apply custom elements using the 'is' attribute
+        Alternatively, it can also be created with the new operator, DOM API
       -->
       <a href="https://www.google.com/" is="x-confirm-anchor">https://www.google.com/</a>
     `;
