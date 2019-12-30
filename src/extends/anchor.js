@@ -1,5 +1,5 @@
 /**
- * AnchorをExtendsしたConfirmAnchorクラス
+ * ConfirmAnchor class that extends Anchor
  */
 export default class ConfirmAnchor extends HTMLAnchorElement {
   /**
@@ -7,9 +7,9 @@ export default class ConfirmAnchor extends HTMLAnchorElement {
    */
   connectedCallback() {
     this.clickLisnner = e => {
-      const result = confirm(`リンクへ跳びますか？ : '${this.href}'`);
+      const result = confirm(`Jump to link? : '${this.href}'`);
       if (!result) {
-        // Anchorのアクションを無効にする
+        // Disable Anchor action
         e.preventDefault();
       }
     }
@@ -25,5 +25,5 @@ export default class ConfirmAnchor extends HTMLAnchorElement {
 }
 
 // Register custom element
-// 既存タグを継承した場合は第3引数を追加
+// Add third argument when extends existing browser element
 customElements.define('x-confirm-anchor', ConfirmAnchor, { extends: 'a' });
