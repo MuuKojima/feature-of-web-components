@@ -2,14 +2,11 @@
   "name": "mastering-webcomponents",
   "version": "0.0.1",
   "description": "",
-  "main": "./src",
+  "main": "./src/index.js",
   "scripts": {
-    "start": "serve ./src",
-    "start:ts": "serve ./ts",
-    "build:ts": "tsc ./src/ts-todolist"
+    "start": "serve ./src"
   },
   "devDependencies": {
-    "serve": "^11.2.0",
-    "typescript": "^3.7.4"
+    "serve": "^11.2.0"
   }
 }
