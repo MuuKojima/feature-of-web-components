@@ -8,23 +8,31 @@ Custom Elements
 HTML Templates
  ┗ tenplateタグを用いた再利用
 (ESModule)
- ┗ 廃止になる html importsの変わりで、厳密にはwebcomponentsの仕様ではないが、ここに登場する事が多い。 moduleとして、jsファイルを読み込む
+ ┗ 廃止になる html importsの変わりで、厳密にはwebcomponentsの仕様ではないが、ここに登場する事が多い。moduleとして、jsファイルを読み込む
 ```
 仕様w3c
 https://github.com/w3c/webcomponents
-
-Shadow DOM
 
 # デモ
 
 ホスティング先
 https://example-61f5d.firebaseapp.com/
 
+# セットアップ
+
+```
+$ npm install .
+$ npm run start
+```
+
 # Hello World
 
 <img src="https://user-images.githubusercontent.com/3895795/71449951-8dc2f600-279b-11ea-9ca5-592a2947afe9.png" width="300"></img>
 
 シンプルな `CustomElements` で `HelloWorld` を表示する <br>
+
+[ソース](
+https://github.com/cam-inc/frontend-hackathon/tree/d2a92da97277058857ea61f84e20171f776e48ab/src/06/muukojima/src/helloworld)
 
 # LifeCycle(Adapted Callback以外)
 
@@ -68,6 +76,9 @@ disconnectedCallbackでの責務はイベントリスナーのremoveといった
 ライフサイクルについてはWHATWGを参照<br>
 https://html.spec.whatwg.org/multipage/custom-elements.html#custom-element-conformance
 
+[ソース](
+https://github.com/cam-inc/frontend-hackathon/tree/d2a92da97277058857ea61f84e20171f776e48ab/src/06/muukojima/src/lifecycle)
+
 # Adapted Callback
 
 <img src="https://user-images.githubusercontent.com/3895795/71449613-9dd6d780-2793-11ea-9eb8-016b897aaff6.gif" width="300"></img>
@@ -76,11 +87,17 @@ https://html.spec.whatwg.org/multipage/custom-elements.html#custom-element-confo
 具体的には親ドキュメントが移動した時に発火するコールバック<br>
 サンプルではカスタムエレメントを`iframe` で表示している別の`html`の中に移動させ発火させている
 
+[ソース](
+https://github.com/cam-inc/frontend-hackathon/tree/d2a92da97277058857ea61f84e20171f776e48ab/src/06/muukojima/src/adapted-callback)
+
 # Extends
 
 <img src="https://user-images.githubusercontent.com/3895795/71449650-8a783c00-2794-11ea-8e9a-b6aef68e2fc1.gif" width="300"></img>
 
 既存の `HTMLAnchorElement` を継承し、遷移に許諾が必要なリンクタグを作成
+
+[ソース](
+https://github.com/cam-inc/frontend-hackathon/tree/d2a92da97277058857ea61f84e20171f776e48ab/src/06/muukojima/src/extends)
 
 # Initialize 3 ways
 
@@ -109,6 +126,9 @@ const Foo = window.customElements.get('x-foo');
 document.body.appendChild(new Foo('hello'));
 ```
 
+[ソース](
+https://github.com/cam-inc/frontend-https://github.com/cam-inc/frontend-hackathon/tree/d2a92da97277058857ea61f84e20171f776e48ab/src/06/muukojima/src/3ways)
+
 # ShadowRootを有効 or 無効
 
 <img src="https://user-images.githubusercontent.com/3895795/71450058-800e7000-279d-11ea-8ac8-b5036ffd9394.png" width="300"></img>
@@ -117,17 +137,23 @@ document.body.appendChild(new Foo('hello'));
 ShadowDOMでないカスタムエレメントの場合はスタイルが後勝ちになり、親の`h1`要素が子の`h1`要素のスタイルになってしまっている。サイズが小さくなり、色が青になっている。
 `ShadowDOM` の場合、親からのスタイルの影響もなければ、子からも親に影響を与えていないことがわかる。
 
+[ソース](
+https://github.com/cam-inc/frontend-hackathon/tree/d2a92da97277058857ea61f84e20171f776e48ab/src/06/muukojima/src/shadowdom)
+
 # ShadowRootのOpen or Close
 
 <img src="https://user-images.githubusercontent.com/3895795/71450087-235f8500-279e-11ea-8391-9768d8f1ba3c.gif" width="300"></img>
 
 `ShadowRoot` には `mode` が `open` か `closed`かを選ぶ事ができる<br>
 `open`は `shadowRoot`が取れるが`closed`は`shadwoRoot`にアクセスすると`null`が返る<br>
-gooleによれば、`closed`は`非推奨`だが `chrome` が堂々と `closed`を使っているは謎が深い<br>
+gooleによれば、`closed`は`非推奨`だが `chrome` が堂々と `closed`を使っているのは興味深い<br>
 Googleのclosed非推奨のリンク<br>
 https://developers.google.com/web/fundamentals/web-components/shadowdom?hl=ja#advanced<br>
 Chromeがclosed使っているリンク
 https://github.com/chromium/chromium/blob/6f13c35b976901ac184b2d731a7b5e722b8cb2b0/third_party/blink/renderer/core/script/resources/layered_api/elements/switch/index.mjs#L129
+
+[ソース](
+https://github.com/cam-inc/frontend-hackathon/tree/d2a92da97277058857ea61f84e20171f776e48ab/src/06/muukojima/src/open-close)
 
 # Template
 
@@ -146,23 +172,29 @@ https://github.com/chromium/chromium/blob/6f13c35b976901ac184b2d731a7b5e722b8cb2
 </template>
 ```
 
+[ソース](
+https://github.com/cam-inc/frontend-hackathon/tree/d2a92da97277058857ea61f84e20171f776e48ab/src/06/muukojima/src/template)
+
 # Slot
 
 <img src="https://user-images.githubusercontent.com/3895795/71450188-1c397680-27a0-11ea-8c07-7e244eb219a0.gif" width="300"></img>
 
-`slot` タグを用いて、外からコンテンツを挿入できる<br>
+`slot` タグを用いて、外からコンテンツを挿入できるモーダルの作成<br>
 尚、`slot` は`shadowRoot`がないと機能しない<br>
+
+[ソース](
+https://github.com/cam-inc/frontend-hackathon/tree/d2a92da97277058857ea61f84e20171f776e48ab/src/06/muukojima/src/slot)
 
 # Todo List
 
 <img src="https://user-images.githubusercontent.com/3895795/71450211-9538ce00-27a0-11ea-820a-3ef59e583bb7.gif" width="300"></img>
 
 9つのサンプルの内容を組み合わせた簡単なアプリケーションの実装<br>
-`Web Components`はただのUI部品を超えていける<br>
+`Web Components`はただのUI部品を超えていける事を試す<br>
+
+[ソース](
+https://github.com/cam-inc/frontend-hackathon/tree/d2a92da97277058857ea61f84e20171f776e48ab/src/06/muukojima/src/todoList)
 
 # 備考
 
-`connectedCallback`ではリソースの `fetch` や `rendering` を行う<br>
-WAHTWGを参照<br>
-https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-autonomous-example
-https://html.spec.whatwg.org/multipage/custom-elements.html#custom-element-conformance
+1ファイルに1クラスにしたいので `export default` をすべてに付けてあります。
