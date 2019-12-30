@@ -1,18 +1,18 @@
-// テンプレートタグの作成
+// Creating template tag
 const template = document.createElement('template');
 template.innerHTML = `
   <h1>Template</h1>
 `;
 
 /**
- * テンプレートクラス
+ * Template implementation class
  */
 export default class Template extends HTMLElement {
   /**
    * Attach
    */
   connectedCallback() {
-    // cloneNodeでテンプレートをアクティベート
+    // Activate template with cloneNode
     this.appendChild(template.content.cloneNode(true));
   }
 }
