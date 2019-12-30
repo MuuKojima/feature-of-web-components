@@ -1,6 +1,6 @@
 import './modal.js';
 
-// テンプレートタグの作成
+// Creating template tag
 const template = document.createElement('template');
 template.innerHTML = `
   <style>
@@ -17,13 +17,13 @@ template.innerHTML = `
     }
   </style>
   <h1>Slot</h1>
-  <button class="signin-button">サインイン</button>
-  <button class="signup-button">サインアップ</button>
+  <button class="signin-button">signin</button>
+  <button class="signup-button">signup</button>
   <div class="container"></div>
 `;
 
 /**
- * Slotのテストクラス
+ * Slot testing class
  */
 export default class XSlot extends HTMLElement {
   /**
@@ -56,7 +56,7 @@ export default class XSlot extends HTMLElement {
   }
 
   /**
-   * サインインをクリック
+   * Click signin
    */
   handleSigninClick() {
     const containerElm = this.shadowRoot.querySelector('.container');
@@ -70,7 +70,7 @@ export default class XSlot extends HTMLElement {
   }
 
   /**
-   * サインアップをクリック
+   * Click signup
    */
   handleSginupClick() {
     const containerElm = this.shadowRoot.querySelector('.container');

@@ -1,4 +1,4 @@
-// テンプレートタグの作成
+// Creating template tag
 const template = document.createElement('template');
 template.innerHTML = `
   <style>
@@ -13,7 +13,7 @@ template.innerHTML = `
 `;
 
 /**
- * Slot実装クラス
+ * Slot implementation class
  */
 export default class XSlot extends HTMLElement {
   /**
@@ -42,7 +42,7 @@ export default class XSlot extends HTMLElement {
   }
 
   /**
-   * クローズをクリック
+   * Click close
    */
   handleCloseClick() {
     const dialogElm = this.shadowRoot.querySelector("dialog");
