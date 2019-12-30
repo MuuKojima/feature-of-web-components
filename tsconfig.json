@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "rootDir": "./src/ts-todolist",
+    "outDir": "./ts",
+    "sourceMap": false,
+    "target": "ESNext"
+  },
+  "include": [
+    "src/**/*"
+  ]
+}

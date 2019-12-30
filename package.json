@@ -4,9 +4,12 @@
   "description": "",
   "main": "./src",
   "scripts": {
-    "start": "serve ./src"
+    "start": "serve ./src",
+    "start:ts": "serve ./ts",
+    "build:ts": "tsc ./src/ts-todolist"
   },
-  "dependencies": {
-    "serve": "^11.2.0"
+  "devDependencies": {
+    "serve": "^11.2.0",
+    "typescript": "^3.7.4"
   }
 }
