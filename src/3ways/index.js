@@ -17,8 +17,7 @@ export default class X3ways extends HTMLElement {
    */
   _render() {
     this.innerHTML = `
-      <h1>Three ways to generate </h1>
-      <h1>for CustomElements</h1>
+      <h1>Three ways to generate CustomElements</h1>
       <!-- ① Declarative tag writing pattern -->
       <x-label label="① hello"></x-label>
     `;
