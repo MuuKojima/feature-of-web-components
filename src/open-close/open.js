@@ -19,7 +19,7 @@ class Open extends HTMLElement {
           text-align: center;
         }
       </style>
-      <h1>Open mode</h1>
+      <h1>Open</h1>
     `;
   }
 }

@@ -18,7 +18,7 @@ export default class OpenClose extends HTMLElement {
           margin: 0 auto;
         }
       </style>
-      <h1>Open or Close of ShadowRoot</h1>
+      <h1>Mode of ShadowRoot</h1>
       <button class="button">click</button>
       <x-open></x-open>
       <x-close></x-close>

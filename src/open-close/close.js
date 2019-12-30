@@ -16,7 +16,7 @@ class Close extends HTMLElement {
           text-align: center;
         }
       </style>
-      <h1>Close mode</h1>
+      <h1>Close</h1>
     `;
   }
 }
