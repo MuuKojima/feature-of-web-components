@@ -2,7 +2,7 @@ import './close.js';
 import './open.js';
 
 /**
- * OpenCloseのテストクラス
+ * Open and Close testing class
  */
 export default class OpenClose extends HTMLElement {
   /**
@@ -10,8 +10,16 @@ export default class OpenClose extends HTMLElement {
    */
   connectedCallback() {
     this.innerHTML = `
-      <h1>ShadowRootのOpenとClose</h1>
-      <button>DOMを取得</button>
+      <style>
+        .button {
+          width: 100px;
+          height: 20px;
+          display: block;
+          margin: 0 auto;
+        }
+      </style>
+      <h1>Open or Close of ShadowRoot</h1>
+      <button class="button">click</button>
       <x-open></x-open>
       <x-close></x-close>
     `;
@@ -29,21 +37,21 @@ export default class OpenClose extends HTMLElement {
   }
 
   /**
-   * ボタンのクリック
+   * Ckick button
    */
   handleClick() {
     const openElm = this.querySelector('x-open');
     const closeElm = this.querySelector('x-close');
     if (openElm.shadowRoot) {
-      // ここに来る
-      alert('オープンのShadowDOMを取得', openElm.shadowRoot);
+      // Come here
+      alert('Get Open ShadowDOM', openElm.shadowRoot);
     }
     if (closeElm.shadowRoot) {
-      // ここには来ない
-      alert('クローズのShadowDOMを取得', openElm.shadowRoot);
+      // Don't come here
+      alert('Get Closed ShadowDOM', openElm.shadowRoot);
     }
     console.log(openElm.shadowRoot);
-    // shadowRootはnullを返す
+    // shadowRoot returns null
     console.log(closeElm.shadowRoot);
   }
 }
