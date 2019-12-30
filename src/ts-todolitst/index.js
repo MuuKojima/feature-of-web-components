@@ -45,7 +45,7 @@ template.innerHTML = `
  */
 export default class TodoList extends HTMLElement {
   /**
-   * コンストラクタ
+   * Constructor
    */
   constructor() {
     super();
@@ -75,7 +75,7 @@ export default class TodoList extends HTMLElement {
   }
 
   /**
-   * 描画
+   * Render
    * @private
    */
   _render() {

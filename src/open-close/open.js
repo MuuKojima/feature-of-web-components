@@ -3,7 +3,7 @@
  */
 class Open extends HTMLElement {
   /**
-   * コンストラクタ
+   * Constructor
    */
   constructor() {
     super();

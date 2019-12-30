@@ -1,5 +1,5 @@
 /**
- *  AdaptedCallbackの実装クラス
+ * AdaptedCallback implementation class
  */
 export default class AdaptedItem extends HTMLElement {
   /**
@@ -10,8 +10,8 @@ export default class AdaptedItem extends HTMLElement {
   }
 
   /**
-   * オーナードキュメントが移った時
-   * つまり、親のhtmlが別のhtmlに変わった時に発火
+   * When the owner document moves
+   * In other words, fire when the parent html is changed to another html
    */
   adoptedCallback() {
     alert('adoptedCallback');

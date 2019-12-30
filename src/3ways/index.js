@@ -12,7 +12,7 @@ export default class X3ways extends HTMLElement {
   }
 
   /**
-   * 描画
+   * Render
    * @private
    */
   _render() {

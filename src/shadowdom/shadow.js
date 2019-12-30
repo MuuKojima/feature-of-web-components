@@ -3,7 +3,7 @@
  */
 export default class Shadow extends HTMLElement {
   /**
-   * コンストラクタ
+   * Constructor
    */
   constructor() {
     super();

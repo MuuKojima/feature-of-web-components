@@ -1,7 +1,7 @@
-import './adaptedCallback.js';
+import './item.js';
 
 /**
- * AdaptedCallbackを試すクラス
+ * AdaptedCallback testing class
  */
 export default class AdaptedCallback extends HTMLElement {
   /**
@@ -44,7 +44,7 @@ export default class AdaptedCallback extends HTMLElement {
   }
 
   /**
-   * ボタンのクリック
+   * Click button
    */
   handleClick() {
     const item = this.querySelector('x-adapted-item');

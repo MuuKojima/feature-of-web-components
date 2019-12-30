@@ -27,7 +27,7 @@ template.innerHTML = `
  */
 export default class XSlot extends HTMLElement {
   /**
-   * コンストラクタ
+   * Constructor
    */
   constructor() {
     super();

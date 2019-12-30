@@ -3,14 +3,14 @@
  */
 export default class Label extends HTMLElement {
   /**
-   * アトリビュートの変更を購読するホワイトリストの作成
+   * Create a whitelist to subscribe to attribute changes
    */
   static get observedAttributes() {
     return ['label'];
   }
 
   /**
-   * アトリビュートの変更を購読
+   * Subscribe to attribute changes
    * @param {string} name 
    * @param {string} oldValue 
    * @param {string} newValue 
@@ -27,7 +27,7 @@ export default class Label extends HTMLElement {
   }
 
   /**
-   * コンストラクタ
+   * Constructor
    */
   constructor(label) {
     super();
@@ -43,7 +43,7 @@ export default class Label extends HTMLElement {
   }
 
   /**
-   * 描画
+   * Render
    * @private
    */
   _render() {

@@ -50,7 +50,7 @@ observedAttributesがコールされ、アトリビュートの変更をリッ�
 オーバーヘッドが起きブラウザのパフォーマンスが良くないからである
 
 ② constructor
-次にコンストラクタが呼ばれ初期化処理が行われる。
+次にConstructorが呼ばれ初期化処理が行われる。
 コンスタントラクタでの責務はイベントリスナーのセットアップや、shadowRootの形成である。
 一般的なコンスタントラクタとして使おうとする時の注意点としては、外から引数をもらい、attributeにセットするパターンであるが
 この時点ではまだattributeに値を設定するとエラーになるので注意したい。
@@ -58,7 +58,7 @@ observedAttributesがコールされ、アトリビュートの変更をリッ�
 解決策はconnectedCallbackでアトリビュートを操作したりレンダリングする事である
 
 ③ attributeChangedCallback
-コンストラクタがコールされた後に、やっとattributeの変更を受け取る事ができ、attributeChangedCallbackが呼ばれる。
+Constructorがコールされた後に、やっとattributeの変更を受け取る事ができ、attributeChangedCallbackが呼ばれる。
 
 ④ connectedCallback
 タグがAttachされると、connectedCallbackが呼ばれる
@@ -69,7 +69,7 @@ connectedCallbackでの責務はリソースのfetchや、レンダリングな�
 disconnectedCallbackでの責務はイベントリスナーのremoveといった、メモリのクリーンアップを行う
 
 ※注意点
-一度でもグローバル(window)にタグが登録されていると、①は呼び出されず、②のコンストラクタからになる。(2度登録するとエラーになる)
+一度でもグローバル(window)にタグが登録されていると、①は呼び出されず、②のConstructorからになる。(2度登録するとエラーになる)
 コンスタントラクタはタグの初期化時に一度だけ呼ばれるが、理論上connectedCallbackはAttachされる度に呼ばれる
 ```
 
@@ -160,11 +160,11 @@ https://github.com/cam-inc/frontend-hackathon/tree/d2a92da97277058857ea61f84e201
 <img src="https://user-images.githubusercontent.com/3895795/71450152-666e2800-279f-11ea-9683-ad333884e029.png" width="300"></img>
 
 テンプレートタグの実装<br>
-`template` タグが画面に描画されても、画面上は存在しない<br>
-またアクティベートされるまで、中のコンテンツは描画もされなければ<br>
+`template` タグが画面にRenderされても、画面上は存在しない<br>
+またアクティベートされるまで、中のコンテンツはRenderもされなければ<br>
 中の画像リソース等も読み込まない
 
-画面に置いても描画もされないし、リソースも取得されない
+画面に置いてもRenderもされないし、リソースも取得されない
 ```
 <template>
   <h1>hello</h1>

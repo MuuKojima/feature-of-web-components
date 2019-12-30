@@ -1,9 +1,9 @@
 /**
- * Lifecycleが実装されたクラス
+ * Lifecycle implementation class
  */
 export default class LifecycleItem extends HTMLElement {
   /**
-   * アトリビュートの変更を購読するホワイトリストの作成
+   * Create a whitelist to subscribe to attribute changes
    */
   static get observedAttributes() {
     alert('①: observedAttributes');
@@ -11,7 +11,7 @@ export default class LifecycleItem extends HTMLElement {
   }
 
   /**
-   * アトリビュートの変更を購読
+   * Subscribe to attribute changes
    * @param {string} name 
    * @param {string} oldValue 
    * @param {string} newValue 
@@ -28,7 +28,7 @@ export default class LifecycleItem extends HTMLElement {
   }
 
   /**
-   * コンストラクタ
+   * Constructor
    */
   constructor() {
     super();
@@ -36,7 +36,7 @@ export default class LifecycleItem extends HTMLElement {
   }
 
   /**
-   * 描画
+   * Render
    */
   _render() {
     this.innerHTML = '<h1 class="label"></h1>';
@@ -59,9 +59,9 @@ export default class LifecycleItem extends HTMLElement {
   }
 
   /**
-   * オーナードキュメントが移った時
+   * When the owner document moves
    */
   adoptedCallback() {
-    // こちらは呼び出すのが難しいので、ここだけ切り出して解説
+    // This is difficult to call, so just cut out and explain
   }
 }
