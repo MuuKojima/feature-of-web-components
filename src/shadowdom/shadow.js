@@ -31,7 +31,7 @@ export default class Shadow extends HTMLElement {
         }
       </style>
       <div class="box-shadow">
-        <h1>Enable ShadowRoot</h1>
+        <h1>Enable shadowRoot</h1>
       <div>
     `;
   }
