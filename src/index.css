@@ -14,10 +14,6 @@ main {
   padding: 30px;
 }
 
-x-helloworld,
-x-lifecycle,
-x-open-close,
-x-adapted-callback,
 x-shadow-noshadow {
   width: 700px;
 }
