@@ -1,9 +1,12 @@
+// Create template tag
 const template = document.createElement('template');
 template.innerHTML = `
   <h1>Adopted Stylesheets</h1>
 `;
 
-
+/**
+ * AdoptedStyleSheets implementation class
+ */
 class AdoptedStyleSheets extends HTMLElement {
   constructor() {
     super();
@@ -25,4 +28,5 @@ class AdoptedStyleSheets extends HTMLElement {
   }
 }
 
+// Register custom element
 window.customElements.define('x-adopted-stylesheets', AdoptedStyleSheets);
