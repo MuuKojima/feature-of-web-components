@@ -1,8 +1,9 @@
-import './adapted-callback/index.js';
+import './adoptedStyleSheets/index.js';
+import './adaptedCallback/index.js';
 import './extends/index.js';
 import './helloworld/index.js';
 import './lifecycle/index.js';
-import './open-close/index.js';
+import './openClose/index.js';
 import './shadowdom/index.js';
 import './slot/index.js';
 import './todoList/index.js';

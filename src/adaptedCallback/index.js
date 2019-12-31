@@ -27,7 +27,7 @@ export default class AdaptedCallback extends HTMLElement {
       <div class="container">
         <div>Outer html</div>
         <button class="button">move</button>
-        <iframe src="./adapted-callback/inner.html">
+        <iframe src="./adaptedCallback/inner.html">
       </div>
     `;
     this.clickLisnner = this.handleClick.bind(this);
