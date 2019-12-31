@@ -7,20 +7,36 @@ template.innerHTML = `
 /**
  * AdoptedStyleSheets implementation class
  */
-class AdoptedStyleSheets extends HTMLElement {
+export default class AdoptedStyleSheets extends HTMLElement {
   constructor() {
     super();
     this._initializeDOM();
   }
 
+  /**
+   * Initialize
+   */
   _initializeDOM = async () => {
-    this.attachShadow({mode: 'open'});
-    const commonStyle = await this._createStyleSheet('../index.css');
-    const carouselStyle = await this._createStyleSheet('./index.css');
-    this.shadowRoot.adoptedStyleSheets = [commonStyle, carouselStyle];
-    this.shadowRoot.appendChild(template.content.cloneNode(true));
+    const commonStylePath = '../index.css';
+    const componentStylePath = './index.css';
+    const tasks = [
+      this._createStyleSheet(commonStylePath), 
+      this._createStyleSheet(componentStylePath)
+    ];
+    try {
+      this.attachShadow({mode: 'open'});
+      this.shadowRoot.adoptedStyleSheets = await Promise.all(tasks);
+      this.shadowRoot.appendChild(template.content.cloneNode(true));
+    } catch(err) {
+      console.error(err);
+    }
   }
 
+  /**
+   * Create stylesheet
+   * @param {string}
+   * @returns {Promise}
+   */
   _createStyleSheet = async path => {
     const url = new URL(path, import.meta.url);
     const style = await new CSSStyleSheet().replace(`@import url(${url})`);
