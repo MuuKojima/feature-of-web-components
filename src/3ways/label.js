@@ -38,7 +38,7 @@ export default class Label extends HTMLElement {
    * Attach
    */
   connectedCallback() {
-    // new オペレーターで初期化された場合はコンスタントラクタ以降でアトリビュートを操作しないとエラーになる
+    // If initialized by the new operator, an error will occur if the attribute is not manipulated after the constructor
     this.label = this._label;
   }
 
