@@ -1,5 +1,5 @@
 /**
- * Labelクラス
+ * Label class
  */
 export default class Label extends HTMLElement {
   /**
